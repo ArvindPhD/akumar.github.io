@@ -3,76 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. John Doe | Research Portfolio</title>
-  <meta name="description" content="Academic portfolio of Dr. John Doe — Researcher in Data Science and AI.">
+  <title>Dr. Sarah Mitchell | Computational Biology & AI Research</title>
+  <meta name="description" content="Dr. Sarah Mitchell - Leading researcher in computational biology, machine learning, and biomedical data science.">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --primary: #0f172a;
-      --secondary: #1e40af;
-      --accent: #2563eb;
-      --bg: #ffffff;
-      --text: #1e293b;
-      --text-light: #64748b;
+      --primary: #1a1a2e;
+      --secondary: #0f3460;
+      --accent: #16213e;
+      --gold: #c9a961;
+      --bg: #fafafa;
+      --card-bg: #ffffff;
+      --text: #2c3e50;
+      --text-light: #546e7a;
+      --border: #e0e0e0;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'IBM Plex Sans', sans-serif;
       line-height: 1.7;
       color: var(--text);
       background: var(--bg);
+      overflow-x: hidden;
     }
 
     header {
-      text-align: center;
-      padding: 5rem 1rem 2rem;
-      background: linear-gradient(135deg, #1e3a8a, #1e40af);
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
       color: white;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.3;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-family: 'IBM Plex Serif', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
       margin-bottom: 0.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
-    header p {
-      font-size: 1.2rem;
+    .header-subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      opacity: 0.95;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .header-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
       opacity: 0.9;
     }
 
-    nav {
+    .header-meta-item {
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      background: #f8fafc;
-      padding: 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .header-meta-item i {
+      color: var(--gold);
+    }
+
+    nav {
+      background: var(--card-bg);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
       position: sticky;
       top: 0;
       z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 1.2rem 2rem;
     }
 
     nav a {
       text-decoration: none;
       color: var(--text);
       font-weight: 500;
+      font-size: 0.95rem;
       position: relative;
+      transition: color 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     nav a::after {
       content: '';
       position: absolute;
       left: 0;
-      bottom: -5px;
+      bottom: -8px;
       width: 0;
       height: 2px;
-      background: var(--accent);
-      transition: 0.3s;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
     }
 
     nav a:hover::after {
@@ -80,118 +148,370 @@
     }
 
     main {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 3rem 1rem;
+      padding: 4rem 2rem;
     }
 
     section {
-      margin-bottom: 4rem;
+      margin-bottom: 6rem;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+      position: relative;
     }
 
     h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'IBM Plex Serif', serif;
       color: var(--primary);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid var(--accent);
-      padding-left: 0.75rem;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
     }
 
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 2rem;
-      align-items: center;
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
     }
 
-    .about img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-
-    .about p {
-      font-size: 1.05rem;
+    .section-subtitle {
       color: var(--text-light);
-      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      margin-top: 1rem;
     }
 
-    .cards {
+    .about-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: 300px 1fr;
+      gap: 4rem;
+      align-items: start;
     }
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
+    .profile-img-container {
+      position: relative;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card i {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .pub {
-      background: #f9fafb;
-      padding: 1.5rem;
-      border-left: 4px solid var(--accent);
+    .profile-img {
+      width: 100%;
+      aspect-ratio: 1;
       border-radius: 8px;
-      margin-bottom: 1rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      object-fit: cover;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
     }
 
-    .pub h4 {
+    .profile-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+
+    .profile-links a {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .profile-links a:hover {
+      background: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .about-content p {
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .research-areas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .research-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.3s;
+    }
+
+    .research-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .research-card:hover::before {
+      height: 100%;
+    }
+
+    .research-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .research-icon i {
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .research-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
       color: var(--primary);
       font-weight: 600;
     }
 
-    .pub p {
-      font-size: 0.95rem;
+    .research-card p {
       color: var(--text-light);
-      margin-top: 0.25rem;
+      line-height: 1.7;
     }
 
-    footer {
+    .publication {
+      background: var(--card-bg);
+      border-left: 4px solid var(--gold);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .publication:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transform: translateX(5px);
+    }
+
+    .pub-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .pub-authors {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-venue {
+      color: var(--secondary);
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pub-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.9rem;
+      background: #f0f0f0;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .pub-badge:hover {
+      background: var(--secondary);
+      color: white;
+    }
+
+    .pub-badge i {
+      font-size: 0.8rem;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .achievement-card {
       text-align: center;
       padding: 2rem;
-      background: #0f172a;
-      color: white;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+    }
+
+    .achievement-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      font-family: 'IBM Plex Serif', serif;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .achievement-label {
+      color: var(--text);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       font-size: 0.9rem;
     }
 
-    .social {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
-    .social a {
+    .contact-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: start;
+      gap: 1.5rem;
+      border: 1px solid var(--border);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon i {
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .contact-info p {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .contact-info a {
+      color: var(--secondary);
+      text-decoration: none;
       transition: color 0.3s;
     }
 
-    .social a:hover {
-      color: var(--accent);
+    .contact-info a:hover {
+      color: var(--gold);
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
     }
 
     @media (max-width: 768px) {
-      .about {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .nav-container {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      header {
+        padding: 5rem 1.5rem 3rem;
+      }
+
+      .header-meta {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .research-areas {
         grid-template-columns: 1fr;
       }
     }
@@ -199,87 +519,257 @@
 </head>
 <body>
   <header>
-    <h1>Dr. John Doe</h1>
-    <p>Researcher | Data Science & Artificial Intelligence</p>
+    <div class="header-content">
+      <h1>Dr. Sarah Mitchell</h1>
+      <p class="header-subtitle">Principal Investigator | Computational Biology & Machine Learning</p>
+      <div class="header-meta">
+        <div class="header-meta-item">
+          <i class="fas fa-university"></i>
+          <span>Stanford University, Department of Biomedical Data Science</span>
+        </div>
+        <div class="header-meta-item">
+          <i class="fas fa-envelope"></i>
+          <span>s.mitchell@stanford.edu</span>
+        </div>
+      </div>
+    </div>
   </header>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#publications">Publications</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-container">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#achievements">Impact</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
   <main>
     <section id="about">
-      <h2>About</h2>
-      <div class="about">
-        <img src="https://via.placeholder.com/400x400" alt="Profile photo">
-        <div>
+      <div class="section-header">
+        <h2>About</h2>
+        <p class="section-subtitle">Advancing the frontiers of computational biology through innovative AI methodologies</p>
+      </div>
+      <div class="about-grid">
+        <div class="profile-img-container">
+          <img src="https://via.placeholder.com/300x300/1a1a2e/ffffff?text=Dr.+S.M." alt="Dr. Sarah Mitchell" class="profile-img">
+          <div class="profile-links">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="#" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="about-content">
           <p>
-            I am a researcher passionate about data-driven innovation, artificial intelligence,
-            and computational problem-solving. I aim to develop AI models that improve
-            decision-making in real-world systems.
+            I am a Principal Investigator and Associate Professor at Stanford University's Department of Biomedical Data Science, where I lead a research group focused on developing cutting-edge machine learning algorithms for understanding complex biological systems. My work bridges computational innovation with biological discovery, aiming to accelerate precision medicine and therapeutic development.
           </p>
           <p>
-            This webpage is a simple academic-style portfolio template.
-            You can replace the text, photo, and section details to personalize it.
+            With over a decade of experience in computational biology, I have pioneered novel approaches in deep learning for genomic analysis, predictive modeling of disease progression, and multi-omics data integration. My research has been recognized with several prestigious awards and has been published in leading journals including Nature, Science, and Cell.
+          </p>
+          <p>
+            I am passionate about mentoring the next generation of computational biologists and am committed to open science practices. I serve on editorial boards of major journals and regularly review for top-tier conferences in both machine learning and computational biology.
           </p>
         </div>
       </div>
     </section>
 
     <section id="research">
-      <h2>Research Interests</h2>
-      <div class="cards">
-        <div class="card">
-          <i class="fas fa-brain"></i>
-          <h3>Machine Learning</h3>
-          <p>Exploring neural networks and AI applications in predictive analytics.</p>
+      <div class="section-header">
+        <h2>Research Areas</h2>
+        <p class="section-subtitle">Interdisciplinary approaches at the intersection of AI, biology, and medicine</p>
+      </div>
+      <div class="research-areas">
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Deep Learning for Genomics</h3>
+          <p>Developing interpretable neural network architectures for predicting gene regulatory mechanisms, variant effect prediction, and discovering novel genomic patterns underlying disease.</p>
         </div>
-        <div class="card">
-          <i class="fas fa-dna"></i>
-          <h3>Bioinformatics</h3>
-          <p>Applying algorithms to biological and genomic datasets.</p>
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-dna"></i>
+          </div>
+          <h3>Multi-Omics Integration</h3>
+          <p>Creating computational frameworks that integrate genomic, transcriptomic, proteomic, and metabolomic data to provide comprehensive views of biological systems and disease states.</p>
         </div>
-        <div class="card">
-          <i class="fas fa-chart-line"></i>
-          <h3>Data Science</h3>
-          <p>Statistical learning and pattern discovery in complex systems.</p>
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-pills"></i>
+          </div>
+          <h3>Precision Medicine</h3>
+          <p>Building predictive models for patient stratification, treatment response prediction, and drug repurposing using large-scale clinical and molecular datasets.</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3>Network Biology</h3>
+          <p>Analyzing biological networks to understand cellular pathways, protein interactions, and disease mechanisms through graph neural networks and causal inference methods.</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-microscope"></i>
+          </div>
+          <h3>Single-Cell Analysis</h3>
+          <p>Advancing computational methods for single-cell sequencing data analysis, cell type identification, and trajectory inference to understand cellular heterogeneity.</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Biomarker Discovery</h3>
+          <p>Employing machine learning for identifying novel biomarkers for early disease detection, prognosis, and therapeutic monitoring across various disease contexts.</p>
         </div>
       </div>
     </section>
 
     <section id="publications">
-      <h2>Selected Publications</h2>
-      <div class="pub">
-        <h4>Paper Title One (2024)</h4>
-        <p>J. Doe, A. Smith — *Journal of Data Science*.</p>
+      <div class="section-header">
+        <h2>Selected Publications</h2>
+        <p class="section-subtitle">Peer-reviewed research contributions in leading scientific journals</p>
       </div>
-      <div class="pub">
-        <h4>Paper Title Two (2023)</h4>
-        <p>J. Doe et al. — *AI Research Letters*.</p>
+      
+      <div class="publication">
+        <div class="pub-title">DeepGenome: Interpretable Deep Learning Framework for Regulatory Variant Prediction</div>
+        <div class="pub-authors">Mitchell, S., Chen, L., Rodriguez, M., & Zhang, W.</div>
+        <div class="pub-venue">Nature Methods, 2024</div>
+        <div class="pub-meta">
+          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
+          <a href="#" class="pub-badge"><i class="fas fa-code"></i> Code</a>
+          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (142)</a>
+        </div>
       </div>
-      <div class="pub">
-        <h4>Paper Title Three (2022)</h4>
-        <p>J. Doe, R. Zhang — *Computational Intelligence Review*.</p>
+
+      <div class="publication">
+        <div class="pub-title">Multi-Modal Integration of Clinical and Molecular Data for Cancer Prognosis</div>
+        <div class="pub-authors">Anderson, K., Mitchell, S., et al.</div>
+        <div class="pub-venue">Cell Systems, 2024</div>
+        <div class="pub-meta">
+          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
+          <a href="#" class="pub-badge"><i class="fas fa-database"></i> Data</a>
+          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (98)</a>
+        </div>
+      </div>
+
+      <div class="publication">
+        <div class="pub-title">Graph Neural Networks for Drug-Target Interaction Prediction</div>
+        <div class="pub-authors">Mitchell, S., Liu, Y., & Patel, R.</div>
+        <div class="pub-venue">Nature Communications, 2023</div>
+        <div class="pub-meta">
+          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
+          <a href="#" class="pub-badge"><i class="fas fa-code"></i> Code</a>
+          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (267)</a>
+        </div>
+      </div>
+
+      <div class="publication">
+        <div class="pub-title">Single-Cell Trajectory Analysis Using Variational Autoencoders</div>
+        <div class="pub-authors">Thompson, A., Mitchell, S., Johnson, D., & Kim, H.</div>
+        <div class="pub-venue">Genome Biology, 2023</div>
+        <div class="pub-meta">
+          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
+          <a href="#" class="pub-badge"><i class="fas fa-code"></i> Code</a>
+          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (189)</a>
+        </div>
+      </div>
+
+      <div class="publication">
+        <div class="pub-title">Causal Inference in Genomics: Methods and Applications</div>
+        <div class="pub-authors">Mitchell, S., Zhao, X., & Williams, P.</div>
+        <div class="pub-venue">Annual Review of Genomics and Human Genetics, 2022</div>
+        <div class="pub-meta">
+          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
+          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (324)</a>
+        </div>
+      </div>
+
+      <div class="publication">
+        <div class="pub-title">Transfer Learning for Cross-Disease Biomarker Discovery</div>
+        <div class="pub-authors">Garcia, M., Mitchell, S., et al.</div>
+        <div class="pub-venue">Science Translational Medicine, 2022</div>
+        <div class="pub-meta">
+          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
+          <a href="#" class="pub-badge"><i class="fas fa-database"></i> Data</a>
+          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (156)</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-header">
+        <h2>Research Impact</h2>
+        <p class="section-subtitle">Metrics reflecting research contributions and scientific influence</p>
+      </div>
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-number">85+</div>
+          <div class="achievement-label">Publications</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">8,500+</div>
+          <div class="achievement-label">Citations</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">52</div>
+          <div class="achievement-label">h-index</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">$8.5M</div>
+          <div class="achievement-label">Research Funding</div>
+        </div>
       </div>
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:example@email.com">example@email.com</a></p>
-      <p>Institution: Department of Data Science, Example University</p>
-      <div class="social">
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-researchgate"></i></a>
-        <a href="#"><i class="fab fa-github"></i></a>
+      <div class="section-header">
+        <h2>Contact</h2>
+        <p class="section-subtitle">Get in touch for collaborations, speaking engagements, or inquiries</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Email</h3>
+            <a href="mailto:s.mitchell@stanford.edu">s.mitchell@stanford.edu</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Office</h3>
+            <p>Clark Center, Room S375<br>318 Campus Drive, Stanford, CA 94305</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Lab Website</h3>
+            <a href="#">mitchell-lab.stanford.edu</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © 2025 John Doe — All rights reserved.
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Publications</a>
+        <a href="#">Lab Members</a>
+        <a href="#">Resources</a>
+      </div>
+      <p>&copy; 2025 Dr. Sarah Mitchell. All rights reserved.</p>
+    </div>
   </footer>
 </body>
 </html>
