@@ -3,28 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Sarah Mitchell | Computational Biology & AI Research</title>
-  <meta name="description" content="Dr. Sarah Mitchell - Leading researcher in computational biology, machine learning, and biomedical data science.">
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet">
+  <title>Dr. Alex Rivera | AI Research & Industry Collaboration</title>
+  <meta name="description" content="Leading AI researcher available for industry projects, consulting, and research collaboration">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root {
-      --primary: #1a1a2e;
-      --secondary: #0f3460;
-      --accent: #16213e;
-      --gold: #c9a961;
-      --bg: #fafafa;
-      --card-bg: #ffffff;
-      --text: #2c3e50;
-      --text-light: #546e7a;
-      --border: #e0e0e0;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --accent: #10b981;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --text: #334155;
+      --text-light: #64748b;
+      --bg: #ffffff;
+      --bg-gray: #f8fafc;
     }
 
     html {
@@ -32,744 +31,890 @@
     }
 
     body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      line-height: 1.7;
+      font-family: 'Inter', sans-serif;
       color: var(--text);
+      line-height: 1.6;
       background: var(--bg);
-      overflow-x: hidden;
     }
 
-    header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+    }
+
+    .logo {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      padding: 0.75rem 1.75rem;
+      background: var(--primary);
       color: white;
-      padding: 8rem 2rem 4rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 10rem 2rem 6rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
       position: relative;
       overflow: hidden;
     }
 
-    header::before {
+    .hero::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-      background-size: 50px 50px;
-      opacity: 0.3;
+      background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="1.5" fill="rgba(255,255,255,0.2)"/></svg>');
+      opacity: 0.4;
     }
 
-    .header-content {
-      max-width: 1200px;
+    .hero-content {
+      max-width: 1300px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
 
-    header h1 {
-      font-family: 'IBM Plex Serif', serif;
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
     }
 
-    .header-subtitle {
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      margin-bottom: 1rem;
       opacity: 0.95;
       font-weight: 300;
-      margin-bottom: 1.5rem;
     }
 
-    .header-meta {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
+    .hero-description {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin-bottom: 2.5rem;
       opacity: 0.9;
+      line-height: 1.7;
     }
 
-    .header-meta-item {
+    .hero-buttons {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
-    .header-meta-item i {
-      color: var(--gold);
-    }
-
-    nav {
-      background: var(--card-bg);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      padding: 1.2rem 2rem;
-    }
-
-    nav a {
+    .btn-primary, .btn-secondary {
+      padding: 1.1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
       text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      font-size: 0.95rem;
-      position: relative;
-      transition: color 0.3s;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
     }
 
-    nav a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      transition: width 0.3s;
+    .btn-primary {
+      background: white;
+      color: var(--primary);
     }
 
-    nav a:hover {
-      color: var(--secondary);
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     }
 
-    nav a:hover::after {
-      width: 100%;
+    .btn-secondary {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid white;
     }
 
-    main {
-      max-width: 1200px;
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1300px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: 0 2rem;
     }
 
     section {
-      margin-bottom: 6rem;
+      padding: 6rem 0;
     }
 
     .section-header {
-      margin-bottom: 3rem;
-      position: relative;
+      text-align: center;
+      margin-bottom: 4rem;
     }
 
-    h2 {
-      font-family: 'IBM Plex Serif', serif;
-      color: var(--primary);
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      margin-bottom: 0.75rem;
-      font-weight: 700;
-      position: relative;
+    .section-tag {
       display: inline-block;
+      padding: 0.5rem 1.25rem;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
     }
 
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: var(--gold);
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 1rem;
     }
 
-    .section-subtitle {
+    .section-description {
+      font-size: 1.2rem;
       color: var(--text-light);
-      font-size: 1.1rem;
-      margin-top: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .profile-img-container {
-      position: relative;
-    }
-
-    .profile-img {
-      width: 100%;
-      aspect-ratio: 1;
-      border-radius: 8px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-      object-fit: cover;
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-    }
-
-    .profile-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      justify-content: center;
-    }
-
-    .profile-links a {
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      transition: all 0.3s;
-      text-decoration: none;
-    }
-
-    .profile-links a:hover {
-      background: var(--gold);
-      transform: translateY(-3px);
-    }
-
-    .about-content p {
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
-    }
-
-    .research-areas {
+    /* Services Grid */
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
     }
 
-    .research-card {
-      background: var(--card-bg);
-      border-radius: 12px;
+    .service-card {
+      background: white;
+      border-radius: 20px;
       padding: 2.5rem;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      border: 1px solid var(--border);
       transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
+      border: 2px solid transparent;
     }
 
-    .research-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 0;
-      background: var(--gold);
-      transition: height 0.3s;
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      border-color: var(--primary);
     }
 
-    .research-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-    }
-
-    .research-card:hover::before {
-      height: 100%;
-    }
-
-    .research-icon {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--secondary), var(--primary));
-      border-radius: 12px;
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary), #8b5cf6);
+      border-radius: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 1.5rem;
-    }
-
-    .research-icon i {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: white;
     }
 
-    .research-card h3 {
-      font-size: 1.4rem;
+    .service-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.5rem;
+      color: var(--dark);
       margin-bottom: 1rem;
-      color: var(--primary);
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .research-card p {
+    .service-card p {
       color: var(--text-light);
       line-height: 1.7;
-    }
-
-    .publication {
-      background: var(--card-bg);
-      border-left: 4px solid var(--gold);
-      padding: 2rem;
-      border-radius: 8px;
       margin-bottom: 1.5rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      transition: all 0.3s;
     }
 
-    .publication:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      transform: translateX(5px);
+    .service-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
     }
 
-    .pub-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
-    }
-
-    .pub-authors {
-      color: var(--text-light);
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .pub-venue {
-      color: var(--secondary);
-      font-style: italic;
-      font-size: 0.95rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .pub-meta {
+    .service-list li {
+      padding: 0.5rem 0;
+      color: var(--text);
       display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .pub-badge {
-      display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.9rem;
-      background: #f0f0f0;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: var(--text);
-      text-decoration: none;
-      transition: all 0.3s;
+      gap: 0.75rem;
     }
 
-    .pub-badge:hover {
-      background: var(--secondary);
-      color: white;
-    }
-
-    .pub-badge i {
-      font-size: 0.8rem;
-    }
-
-    .achievements-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .achievement-card {
-      text-align: center;
-      padding: 2rem;
-      background: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      border: 1px solid var(--border);
-    }
-
-    .achievement-number {
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--gold);
-      font-family: 'IBM Plex Serif', serif;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .achievement-label {
-      color: var(--text);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .service-list li i {
+      color: var(--accent);
       font-size: 0.9rem;
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .contact-card {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      display: flex;
-      align-items: start;
-      gap: 1.5rem;
-      border: 1px solid var(--border);
-    }
-
-    .contact-icon {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--secondary), var(--primary));
-      border-radius: 10px;
-      display: flex;
+    .service-link {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .contact-icon i {
-      color: white;
-      font-size: 1.3rem;
-    }
-
-    .contact-info h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+      gap: 0.5rem;
       color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: gap 0.3s;
     }
 
-    .contact-info p {
+    .service-link:hover {
+      gap: 1rem;
+    }
+
+    /* Research Areas */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .research-item {
+      background: var(--bg-gray);
+      padding: 2rem;
+      border-radius: 15px;
+      transition: all 0.3s;
+      border-left: 4px solid var(--primary);
+    }
+
+    .research-item:hover {
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transform: translateX(5px);
+    }
+
+    .research-item h4 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .research-item p {
       color: var(--text-light);
       line-height: 1.6;
     }
 
-    .contact-info a {
-      color: var(--secondary);
+    /* Stats Section */
+    .stats-section {
+      background: var(--dark);
+      color: white;
+      padding: 5rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 1.5rem;
+    }
+
+    .stat-number {
+      font-family: 'Sora', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.5rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .project-card p {
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .project-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Collaboration Section */
+    .collab-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 30px;
+      padding: 5rem 3rem;
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .collab-section h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+    }
+
+    .collab-section p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      opacity: 0.95;
+    }
+
+    .collab-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .collab-feature {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .collab-feature i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .collab-feature h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Contact Form */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .contact-info p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--bg-gray);
+      border-radius: 15px;
+      transition: all 0.3s;
+    }
+
+    .contact-item:hover {
+      background: white;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-item-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.3rem;
+    }
+
+    .contact-item a {
+      color: var(--primary);
       text-decoration: none;
-      transition: color 0.3s;
+      font-weight: 600;
     }
 
-    .contact-info a:hover {
-      color: var(--gold);
+    .contact-form {
+      background: var(--bg-gray);
+      padding: 2.5rem;
+      border-radius: 20px;
     }
 
-    footer {
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1.2rem;
       background: var(--primary);
       color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 0;
       text-align: center;
-      padding: 3rem 2rem;
-      margin-top: 4rem;
     }
 
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-links {
+    .footer-social {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.5rem;
       margin-bottom: 1.5rem;
-      flex-wrap: wrap;
     }
 
-    .footer-links a {
+    .social-link {
+      width: 45px;
+      height: 45px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: white;
       text-decoration: none;
-      transition: color 0.3s;
-      font-size: 0.95rem;
+      transition: all 0.3s;
     }
 
-    .footer-links a:hover {
-      color: var(--gold);
+    .social-link:hover {
+      background: var(--primary);
+      transform: translateY(-5px);
     }
 
+    /* Mobile Responsive */
     @media (max-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+      .nav-links {
+        display: none;
       }
 
-      .nav-container {
-        gap: 1.5rem;
-        flex-wrap: wrap;
+      .hero {
+        padding: 8rem 2rem 4rem;
       }
 
-      header {
-        padding: 5rem 1.5rem 3rem;
-      }
-
-      .header-meta {
+      .hero-buttons {
         flex-direction: column;
-        gap: 0.75rem;
       }
 
-      .contact-grid {
+      .services-grid,
+      .projects-grid {
         grid-template-columns: 1fr;
       }
 
-      .research-areas {
+      .contact-container {
         grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .collab-section {
+        padding: 3rem 2rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <h1>Dr. Sarah Mitchell</h1>
-      <p class="header-subtitle">Principal Investigator | Computational Biology & Machine Learning</p>
-      <div class="header-meta">
-        <div class="header-meta-item">
-          <i class="fas fa-university"></i>
-          <span>Stanford University, Department of Biomedical Data Science</span>
-        </div>
-        <div class="header-meta-item">
-          <i class="fas fa-envelope"></i>
-          <span>s.mitchell@stanford.edu</span>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <nav>
+  <nav id="navbar">
     <div class="nav-container">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#achievements">Impact</a>
-      <a href="#contact">Contact</a>
+      <div class="logo">DR. ALEX RIVERA</div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Work With Me</a>
     </div>
   </nav>
 
-  <main>
-    <section id="about">
-      <div class="section-header">
-        <h2>About</h2>
-        <p class="section-subtitle">Advancing the frontiers of computational biology through innovative AI methodologies</p>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Transform Your Ideas Into Reality</h1>
+      <p class="hero-subtitle">AI Researcher • Industry Consultant • Innovation Partner</p>
+      <p class="hero-description">
+        Leading AI and machine learning researcher with 15+ years of experience helping businesses and research institutions solve complex problems through cutting-edge technology.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">
+          <i class="fas fa-rocket"></i>
+          Start a Project
+        </a>
+        <a href="#services" class="btn-secondary">
+          <i class="fas fa-lightbulb"></i>
+          Explore Services
+        </a>
       </div>
-      <div class="about-grid">
-        <div class="profile-img-container">
-          <img src="https://via.placeholder.com/300x300/1a1a2e/ffffff?text=Dr.+S.M." alt="Dr. Sarah Mitchell" class="profile-img">
-          <div class="profile-links">
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-            <a href="#" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
-            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-        <div class="about-content">
-          <p>
-            I am a Principal Investigator and Associate Professor at Stanford University's Department of Biomedical Data Science, where I lead a research group focused on developing cutting-edge machine learning algorithms for understanding complex biological systems. My work bridges computational innovation with biological discovery, aiming to accelerate precision medicine and therapeutic development.
-          </p>
-          <p>
-            With over a decade of experience in computational biology, I have pioneered novel approaches in deep learning for genomic analysis, predictive modeling of disease progression, and multi-omics data integration. My research has been recognized with several prestigious awards and has been published in leading journals including Nature, Science, and Cell.
-          </p>
-          <p>
-            I am passionate about mentoring the next generation of computational biologists and am committed to open science practices. I serve on editorial boards of major journals and regularly review for top-tier conferences in both machine learning and computational biology.
-          </p>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="research">
+  <section id="services">
+    <div class="container">
       <div class="section-header">
-        <h2>Research Areas</h2>
-        <p class="section-subtitle">Interdisciplinary approaches at the intersection of AI, biology, and medicine</p>
+        <span class="section-tag">What I Offer</span>
+        <h2 class="section-title">Services & Expertise</h2>
+        <p class="section-description">
+          Comprehensive AI and machine learning solutions tailored to your industry needs
+        </p>
       </div>
-      <div class="research-areas">
-        <div class="research-card">
-          <div class="research-icon">
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
             <i class="fas fa-brain"></i>
           </div>
-          <h3>Deep Learning for Genomics</h3>
-          <p>Developing interpretable neural network architectures for predicting gene regulatory mechanisms, variant effect prediction, and discovering novel genomic patterns underlying disease.</p>
+          <h3>AI Consulting</h3>
+          <p>Strategic guidance on implementing AI solutions in your organization, from initial assessment to deployment.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Technology Assessment</li>
+            <li><i class="fas fa-check-circle"></i> AI Strategy Development</li>
+            <li><i class="fas fa-check-circle"></i> Implementation Roadmap</li>
+          </ul>
+          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="research-card">
-          <div class="research-icon">
-            <i class="fas fa-dna"></i>
-          </div>
-          <h3>Multi-Omics Integration</h3>
-          <p>Creating computational frameworks that integrate genomic, transcriptomic, proteomic, and metabolomic data to provide comprehensive views of biological systems and disease states.</p>
-        </div>
-        <div class="research-card">
-          <div class="research-icon">
-            <i class="fas fa-pills"></i>
-          </div>
-          <h3>Precision Medicine</h3>
-          <p>Building predictive models for patient stratification, treatment response prediction, and drug repurposing using large-scale clinical and molecular datasets.</p>
-        </div>
-        <div class="research-card">
-          <div class="research-icon">
-            <i class="fas fa-project-diagram"></i>
-          </div>
-          <h3>Network Biology</h3>
-          <p>Analyzing biological networks to understand cellular pathways, protein interactions, and disease mechanisms through graph neural networks and causal inference methods.</p>
-        </div>
-        <div class="research-card">
-          <div class="research-icon">
-            <i class="fas fa-microscope"></i>
-          </div>
-          <h3>Single-Cell Analysis</h3>
-          <p>Advancing computational methods for single-cell sequencing data analysis, cell type identification, and trajectory inference to understand cellular heterogeneity.</p>
-        </div>
-        <div class="research-card">
-          <div class="research-icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <h3>Biomarker Discovery</h3>
-          <p>Employing machine learning for identifying novel biomarkers for early disease detection, prognosis, and therapeutic monitoring across various disease contexts.</p>
-        </div>
-      </div>
-    </section>
 
-    <section id="publications">
-      <div class="section-header">
-        <h2>Selected Publications</h2>
-        <p class="section-subtitle">Peer-reviewed research contributions in leading scientific journals</p>
-      </div>
-      
-      <div class="publication">
-        <div class="pub-title">DeepGenome: Interpretable Deep Learning Framework for Regulatory Variant Prediction</div>
-        <div class="pub-authors">Mitchell, S., Chen, L., Rodriguez, M., & Zhang, W.</div>
-        <div class="pub-venue">Nature Methods, 2024</div>
-        <div class="pub-meta">
-          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
-          <a href="#" class="pub-badge"><i class="fas fa-code"></i> Code</a>
-          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (142)</a>
-        </div>
-      </div>
-
-      <div class="publication">
-        <div class="pub-title">Multi-Modal Integration of Clinical and Molecular Data for Cancer Prognosis</div>
-        <div class="pub-authors">Anderson, K., Mitchell, S., et al.</div>
-        <div class="pub-venue">Cell Systems, 2024</div>
-        <div class="pub-meta">
-          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
-          <a href="#" class="pub-badge"><i class="fas fa-database"></i> Data</a>
-          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (98)</a>
-        </div>
-      </div>
-
-      <div class="publication">
-        <div class="pub-title">Graph Neural Networks for Drug-Target Interaction Prediction</div>
-        <div class="pub-authors">Mitchell, S., Liu, Y., & Patel, R.</div>
-        <div class="pub-venue">Nature Communications, 2023</div>
-        <div class="pub-meta">
-          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
-          <a href="#" class="pub-badge"><i class="fas fa-code"></i> Code</a>
-          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (267)</a>
-        </div>
-      </div>
-
-      <div class="publication">
-        <div class="pub-title">Single-Cell Trajectory Analysis Using Variational Autoencoders</div>
-        <div class="pub-authors">Thompson, A., Mitchell, S., Johnson, D., & Kim, H.</div>
-        <div class="pub-venue">Genome Biology, 2023</div>
-        <div class="pub-meta">
-          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
-          <a href="#" class="pub-badge"><i class="fas fa-code"></i> Code</a>
-          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (189)</a>
-        </div>
-      </div>
-
-      <div class="publication">
-        <div class="pub-title">Causal Inference in Genomics: Methods and Applications</div>
-        <div class="pub-authors">Mitchell, S., Zhao, X., & Williams, P.</div>
-        <div class="pub-venue">Annual Review of Genomics and Human Genetics, 2022</div>
-        <div class="pub-meta">
-          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
-          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (324)</a>
-        </div>
-      </div>
-
-      <div class="publication">
-        <div class="pub-title">Transfer Learning for Cross-Disease Biomarker Discovery</div>
-        <div class="pub-authors">Garcia, M., Mitchell, S., et al.</div>
-        <div class="pub-venue">Science Translational Medicine, 2022</div>
-        <div class="pub-meta">
-          <a href="#" class="pub-badge"><i class="fas fa-file-pdf"></i> PDF</a>
-          <a href="#" class="pub-badge"><i class="fas fa-database"></i> Data</a>
-          <a href="#" class="pub-badge"><i class="fas fa-quote-right"></i> Cite (156)</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="achievements">
-      <div class="section-header">
-        <h2>Research Impact</h2>
-        <p class="section-subtitle">Metrics reflecting research contributions and scientific influence</p>
-      </div>
-      <div class="achievements-grid">
-        <div class="achievement-card">
-          <div class="achievement-number">85+</div>
-          <div class="achievement-label">Publications</div>
-        </div>
-        <div class="achievement-card">
-          <div class="achievement-number">8,500+</div>
-          <div class="achievement-label">Citations</div>
-        </div>
-        <div class="achievement-card">
-          <div class="achievement-number">52</div>
-          <div class="achievement-label">h-index</div>
-        </div>
-        <div class="achievement-card">
-          <div class="achievement-number">$8.5M</div>
-          <div class="achievement-label">Research Funding</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="section-header">
-        <h2>Contact</h2>
-        <p class="section-subtitle">Get in touch for collaborations, speaking engagements, or inquiries</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-code"></i>
           </div>
-          <div class="contact-info">
-            <h3>Email</h3>
-            <a href="mailto:s.mitchell@stanford.edu">s.mitchell@stanford.edu</a>
-          </div>
+          <h3>Custom ML Solutions</h3>
+          <p>Develop tailored machine learning models and systems designed specifically for your business challenges.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Predictive Analytics</li>
+            <li><i class="fas fa-check-circle"></i> Computer Vision</li>
+            <li><i class="fas fa-check-circle"></i> NLP Systems</li>
+          </ul>
+          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="contact-card">
-          <div class="contact-icon">
-            <i class="fas fa-building"></i>
-          </div>
-          <div class="contact-info">
-            <h3>Office</h3>
-            <p>Clark Center, Room S375<br>318 Campus Drive, Stanford, CA 94305</p>
-          </div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">
+
+        <div class="service-card">
+          <div class="service-icon">
             <i class="fas fa-users"></i>
           </div>
-          <div class="contact-info">
-            <h3>Lab Website</h3>
-            <a href="#">mitchell-lab.stanford.edu</a>
+          <h3>Research Collaboration</h3>
+          <p>Partner on cutting-edge research projects with academic institutions and innovative companies.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Joint Research Projects</li>
+            <li><i class="fas fa-check-circle"></i> Grant Applications</li>
+            <li><i class="fas fa-check-circle"></i> Publication Support</li>
+          </ul>
+          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
           </div>
+          <h3>Training & Workshops</h3>
+          <p>Upskill your team with hands-on training in AI, machine learning, and data science.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Corporate Training</li>
+            <li><i class="fas fa-check-circle"></i> Technical Workshops</li>
+            <li><i class="fas fa-check-circle"></i> Keynote Speaking</li>
+          </ul>
+          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Data Strategy</h3>
+          <p>Build robust data infrastructure and analytics pipelines to drive informed decision-making.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Data Architecture</li>
+            <li><i class="fas fa-check-circle"></i> Analytics Platform</li>
+            <li><i class="fas fa-check-circle"></i> Business Intelligence</li>
+          </ul>
+          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>AI Ethics & Governance</h3>
+          <p>Ensure responsible AI implementation with ethical frameworks and compliance strategies.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Ethics Assessment</li>
+            <li><i class="fas fa-check-circle"></i> Bias Detection</li>
+            <li><i class="fas fa-check-circle"></i> Compliance Strategy</li>
+          </ul>
+          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Publications</a>
-        <a href="#">Lab Members</a>
-        <a href="#">Resources</a>
-      </div>
-      <p>&copy; 2025 Dr. Sarah Mitchell. All rights reserved.</p>
     </div>
-  </footer>
-</body>
-</html>
+  </section>
+
+  <div class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Industry Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">120+</div>
+          <div class="stat-label">Publications</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$15M</div>
+          <div class="stat-label">Research Funding</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="research">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Expertise</span>
+        <h2 class="section-title">Research Areas</h2>
+        <p class="section-description">
+          Specialized expertise across multiple AI and machine learning domains
+        </p>
+      </div>
+
+      <div class="research-grid">
+        <div class="research-item">
+          <h4>Deep Learning</h4>
+          <p>Advanced neural network architectures for complex pattern recognition and decision-making tasks.</p>
+        </div>
+        <div class="research-item">
+          <h4>Natural Language Processing</h4>
+          <p>State-of-the-art NLP models for text understanding, generation, and conversational AI.</p>
+        </div>
+        <div class="research-item">
+          <h4>Computer Vision</h4>
+          <p>Image and video analysis systems for object detection, recognition, and scene understanding.</p>
+        </div>
+        <div class="research-item">
+          <h4>Reinforcement Learning</h4>
+          <p>Autonomous decision-making systems that learn optimal strategies through interaction.</p>
+        </div>
+        <div class="research-item">
+          <h4>Predictive Analytics</h4>
+          <p>Time-series forecasting and predictive modeling for business intelligence applications.</p>
+        </div>
+        <div class="research-item">
+          <h4>Explainable AI</h4>
+          <p>Interpretable machine learning models that provide transparent and trustworthy predictions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Recent Projects</h2>
+        <p class="section-description">
+          Successful collaborations with industry leaders and research institutions
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-hospital"></i>
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Healthcare</span>
+            <h3>Medical Image Analysis System</h3>
+            <p>Developed AI-powered diagnostic tool for early disease detection, achieving 95% accuracy in clinical trials.</p>
+            <div class="project-meta">
+              <span><i class="fas fa-calendar"></i> 2024</span>
+              <span><i class="fas fa-building"></i> MedTech Corp</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa
