@@ -21,136 +21,6 @@
       background: #0f172a;
     }
 
-    /* Toggle Button */
-    .view-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      display: flex;
-      gap: 10px;
-    }
-
-    .toggle-btn {
-      background: rgba(59, 130, 246, 0.9);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 14px;
-      transition: all 0.3s;
-      backdrop-filter: blur(10px);
-    }
-
-    .toggle-btn:hover {
-      background: rgba(59, 130, 246, 1);
-      transform: translateY(-2px);
-    }
-
-    .toggle-btn.active {
-      background: rgba(34, 197, 94, 0.9);
-    }
-
-    /* Split View Container */
-    .split-container {
-      display: flex;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .split-container.preview-only .preview-pane {
-      width: 100%;
-    }
-
-    .split-container.preview-only .code-pane {
-      display: none;
-    }
-
-    .split-container.code-only .preview-pane {
-      display: none;
-    }
-
-    .split-container.code-only .code-pane {
-      width: 100%;
-    }
-
-    /* Preview Pane */
-    .preview-pane {
-      width: 50%;
-      height: 100vh;
-      overflow-y: auto;
-      position: relative;
-    }
-
-    /* Code Pane */
-    .code-pane {
-      width: 50%;
-      height: 100vh;
-      background: #1e293b;
-      border-left: 2px solid #334155;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .code-header {
-      background: #0f172a;
-      padding: 15px 20px;
-      border-bottom: 2px solid #334155;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .code-header h3 {
-      color: #60a5fa;
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .copy-btn {
-      background: rgba(59, 130, 246, 0.2);
-      color: #60a5fa;
-      border: 1px solid #3b82f6;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 500;
-      transition: all 0.3s;
-    }
-
-    .copy-btn:hover {
-      background: rgba(59, 130, 246, 0.3);
-    }
-
-    .code-content {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-      font-family: 'Courier New', monospace;
-      font-size: 13px;
-      line-height: 1.6;
-      color: #cbd5e1;
-    }
-
-    .code-content pre {
-      margin: 0;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-
-    /* Syntax Highlighting */
-    .code-content .tag { color: #f472b6; }
-    .code-content .attr { color: #818cf8; }
-    .code-content .value { color: #34d399; }
-    .code-content .comment { color: #64748b; font-style: italic; }
-    .code-content .property { color: #fbbf24; }
-    .code-content .selector { color: #a78bfa; }
-
     /* Animated Background */
     .fluid-background {
       position: fixed;
@@ -162,21 +32,104 @@
       background: linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #020617 100%);
       overflow: hidden;
     }
-    
-    .grid-overlay {
+
+    /* Animated Wave Pattern */
+    .wave-container {
       position: absolute;
       width: 100%;
       height: 100%;
-      background-image: 
-        linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
-      background-size: 60px 60px;
-      animation: grid-move 20s linear infinite;
+      opacity: 0.15;
     }
-    
-    @keyframes grid-move {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(60px); }
+
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        rgba(59, 130, 246, 0.3) 2px,
+        transparent 4px,
+        transparent 20px
+      );
+      animation: waveFlow 20s linear infinite;
+    }
+
+    .wave:nth-child(2) {
+      background: repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        rgba(139, 92, 246, 0.2) 1px,
+        transparent 2px,
+        transparent 30px
+      );
+      animation-duration: 25s;
+      animation-direction: reverse;
+    }
+
+    .wave:nth-child(3) {
+      background: repeating-linear-gradient(
+        135deg,
+        transparent 0px,
+        rgba(99, 102, 241, 0.25) 1px,
+        transparent 2px,
+        transparent 25px
+      );
+      animation-duration: 30s;
+    }
+
+    @keyframes waveFlow {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Flowing Particles */
+    .particle-stream {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .stream-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(59, 130, 246, 0.6);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+      animation: streamFlow 8s linear infinite;
+    }
+
+    .stream-particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+    .stream-particle:nth-child(2) { top: 40%; left: 30%; animation-delay: 1s; }
+    .stream-particle:nth-child(3) { top: 60%; left: 50%; animation-delay: 2s; }
+    .stream-particle:nth-child(4) { top: 30%; left: 70%; animation-delay: 3s; }
+    .stream-particle:nth-child(5) { top: 50%; left: 15%; animation-delay: 4s; }
+    .stream-particle:nth-child(6) { top: 70%; left: 85%; animation-delay: 5s; }
+    .stream-particle:nth-child(7) { top: 25%; left: 45%; animation-delay: 1.5s; }
+    .stream-particle:nth-child(8) { top: 80%; left: 25%; animation-delay: 2.5s; }
+    .stream-particle:nth-child(9) { top: 15%; left: 60%; animation-delay: 3.5s; }
+    .stream-particle:nth-child(10) { top: 45%; left: 80%; animation-delay: 4.5s; }
+
+    @keyframes streamFlow {
+      0% {
+        transform: translate(0, 0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(100vw, -50vh);
+        opacity: 0;
+      }
     }
 
     .fluid-container {
@@ -188,48 +141,72 @@
     .fluid-particle {
       position: absolute;
       border-radius: 50%;
-      filter: blur(80px);
-      animation: float 20s infinite ease-in-out;
+      filter: blur(60px);
+      animation: fluidFlow 15s infinite ease-in-out;
+      opacity: 0.8;
     }
 
     .fluid-particle:nth-child(1) {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(59, 130, 246, 0) 70%);
-      top: 20%;
-      right: 10%;
-      animation-duration: 25s;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, rgba(59, 130, 246, 0) 70%);
+      top: 10%;
+      right: 5%;
+      animation-duration: 12s;
     }
 
     .fluid-particle:nth-child(2) {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0) 70%);
-      bottom: 20%;
-      left: 10%;
-      animation-duration: 30s;
-      animation-delay: 5s;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0) 70%);
+      bottom: 15%;
+      left: 5%;
+      animation-duration: 15s;
+      animation-delay: 3s;
     }
 
     .fluid-particle:nth-child(3) {
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, rgba(99, 102, 241, 0) 70%);
-      top: 50%;
-      left: 50%;
-      animation-duration: 35s;
-      animation-delay: 10s;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.55) 0%, rgba(99, 102, 241, 0) 70%);
+      top: 40%;
+      left: 40%;
+      animation-duration: 18s;
+      animation-delay: 6s;
     }
 
-    @keyframes float {
+    .fluid-particle:nth-child(4) {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(147, 51, 234, 0.45) 0%, rgba(147, 51, 234, 0) 70%);
+      top: 60%;
+      right: 20%;
+      animation-duration: 14s;
+      animation-delay: 2s;
+    }
+
+    .fluid-particle:nth-child(5) {
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(59, 130, 246, 0) 70%);
+      bottom: 40%;
+      left: 30%;
+      animation-duration: 16s;
+      animation-delay: 4s;
+    }
+
+    @keyframes fluidFlow {
       0%, 100% {
-        transform: translate(0, 0) scale(1);
+        transform: translate(0, 0) rotate(0deg) scale(1);
       }
-      33% {
-        transform: translate(30px, -30px) scale(1.1);
+      25% {
+        transform: translate(100px, -80px) rotate(90deg) scale(1.3);
       }
-      66% {
-        transform: translate(-30px, 30px) scale(0.9);
+      50% {
+        transform: translate(-80px, 100px) rotate(180deg) scale(0.85);
+      }
+      75% {
+        transform: translate(120px, 60px) rotate(270deg) scale(1.2);
       }
     }
 
@@ -557,25 +534,6 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .split-container {
-        flex-direction: column;
-      }
-      
-      .preview-pane, .code-pane {
-        width: 100% !important;
-        height: 50vh;
-      }
-
-      .view-toggle {
-        top: 10px;
-        right: 10px;
-      }
-
-      .toggle-btn {
-        padding: 8px 16px;
-        font-size: 12px;
-      }
-
       .hero h1 {
         font-size: 2.5rem;
       }
@@ -583,178 +541,115 @@
       .nav-links {
         display: none;
       }
+
+      .hero {
+        padding: 4rem 1rem 3rem;
+      }
+
+      section {
+        padding: 3rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="view-toggle">
-    <button class="toggle-btn" onclick="toggleView('split')">Split View</button>
-    <button class="toggle-btn" onclick="toggleView('preview')">Preview Only</button>
-    <button class="toggle-btn" onclick="toggleView('code')">Code Only</button>
-  </div>
-
-  <div class="split-container" id="splitContainer">
-    <!-- Preview Pane -->
-    <div class="preview-pane" id="previewPane">
-      <div class="fluid-background">
-        <div class="grid-overlay"></div>
-        <div class="fluid-container">
-          <div class="fluid-particle"></div>
-          <div class="fluid-particle"></div>
-          <div class="fluid-particle"></div>
-        </div>
-      </div>
-
-      <nav>
-        <div class="nav-container">
-          <div class="logo">Arvind Kumar</div>
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#expertise">Expertise</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <section class="hero">
-        <div class="hero-badge">Bio-Fluid Mechanics & CFD Specialist</div>
-        <h1>Advancing Fluid<br>Dynamics Research</h1>
-        <p class="subtitle">Computational fluid dynamics expert specializing in bio-fluid mechanics, heat transfer analysis, and complex flow phenomena modeling</p>
-        <div class="hero-buttons">
-          <a href="#expertise" class="btn-primary">
-            <span>Explore Research</span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
-          <a href="#contact" class="btn-secondary">
-            <i class="fas fa-envelope"></i>
-            <span>Get in Touch</span>
-          </a>
-        </div>
-      </section>
-
-      <section id="expertise">
-        <div class="section-header">
-          <div class="section-label">Core Competencies</div>
-          <h2 class="section-title">Areas of Expertise</h2>
-          <p class="section-description">Specialized knowledge across multiple domains of fluid mechanics</p>
-        </div>
-
-        <div class="expertise-grid">
-          <div class="expertise-card">
-            <i class="fas fa-wind icon"></i>
-            <h3>Computational Fluid Dynamics</h3>
-            <p>Advanced CFD modeling and numerical analysis for complex flow systems</p>
-          </div>
-
-          <div class="expertise-card">
-            <i class="fas fa-fire icon"></i>
-            <h3>Heat Transfer Analysis</h3>
-            <p>Thermal system optimization and cooling strategy development</p>
-          </div>
-
-          <div class="expertise-card">
-            <i class="fas fa-heartbeat icon"></i>
-            <h3>Bio-Fluid Mechanics</h3>
-            <p>Hemodynamic modeling and biological transport phenomena</p>
-          </div>
-
-          <div class="expertise-card">
-            <i class="fas fa-microscope icon"></i>
-            <h3>Microfluidics</h3>
-            <p>Lab-on-chip design and microscale flow behavior analysis</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="contact-section">
-        <h2>Let's Collaborate</h2>
-        <p>Interested in discussing research opportunities?</p>
-        
-        <div class="contact-grid">
-          <div class="contact-card">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <p>arvind.kumar@email.com</p>
-          </div>
-
-          <div class="contact-card">
-            <i class="fab fa-linkedin"></i>
-            <h3>LinkedIn</h3>
-            <p>Connect professionally</p>
-          </div>
-
-          <div class="contact-card">
-            <i class="fab fa-github"></i>
-            <h3>GitHub</h3>
-            <p>View repositories</p>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- Code Pane -->
-    <div class="code-pane" id="codePane">
-      <div class="code-header">
-        <h3><i class="fas fa-code"></i> HTML & CSS Code</h3>
-        <button class="copy-btn" onclick="copyCode()">
-          <i class="fas fa-copy"></i> Copy Code
-        </button>
-      </div>
-      <div class="code-content" id="codeContent">
-        <pre><!-- The complete HTML and CSS code will be displayed here --></pre>
-      </div>
+  <div class="fluid-background">
+    <div class="fluid-container">
+      <div class="fluid-particle"></div>
+      <div class="fluid-particle"></div>
+      <div class="fluid-particle"></div>
+      <div class="fluid-particle"></div>
+      <div class="fluid-particle"></div>
     </div>
   </div>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Arvind Kumar</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">Bio-Fluid Mechanics & CFD Specialist</div>
+    <h1>Advancing Fluid<br>Dynamics Research</h1>
+    <p class="subtitle">Computational fluid dynamics expert specializing in bio-fluid mechanics, heat transfer analysis, and complex flow phenomena modeling</p>
+    <div class="hero-buttons">
+      <a href="#expertise" class="btn-primary">
+        <span>Explore Research</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+      <a href="#contact" class="btn-secondary">
+        <i class="fas fa-envelope"></i>
+        <span>Get in Touch</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="expertise">
+    <div class="section-header">
+      <div class="section-label">Core Competencies</div>
+      <h2 class="section-title">Areas of Expertise</h2>
+      <p class="section-description">Specialized knowledge across multiple domains of fluid mechanics</p>
+    </div>
+
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <i class="fas fa-wind icon"></i>
+        <h3>Computational Fluid Dynamics</h3>
+        <p>Advanced CFD modeling and numerical analysis for complex flow systems</p>
+      </div>
+
+      <div class="expertise-card">
+        <i class="fas fa-fire icon"></i>
+        <h3>Heat Transfer Analysis</h3>
+        <p>Thermal system optimization and cooling strategy development</p>
+      </div>
+
+      <div class="expertise-card">
+        <i class="fas fa-heartbeat icon"></i>
+        <h3>Bio-Fluid Mechanics</h3>
+        <p>Hemodynamic modeling and biological transport phenomena</p>
+      </div>
+
+      <div class="expertise-card">
+        <i class="fas fa-microscope icon"></i>
+        <h3>Microfluidics</h3>
+        <p>Lab-on-chip design and microscale flow behavior analysis</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>Let's Collaborate</h2>
+    <p>Interested in discussing research opportunities?</p>
+    
+    <div class="contact-grid">
+      <a href="mailto:rajputarvi3@gmail.com" class="contact-card" style="text-decoration: none;">
+        <i class="fas fa-envelope"></i>
+        <h3>Email</h3>
+        <p>rajputarvi3@gmail.com</p>
+      </a>
+
+      <a href="https://www.linkedin.com/in/arvind-kumar-5464bb112" target="_blank" rel="noopener noreferrer" class="contact-card" style="text-decoration: none;">
+        <i class="fab fa-linkedin"></i>
+        <h3>LinkedIn</h3>
+        <p>Connect professionally</p>
+      </a>
+
+      <a href="https://github.com/ArvindPhD" target="_blank" rel="noopener noreferrer" class="contact-card" style="text-decoration: none;">
+        <i class="fab fa-github"></i>
+        <h3>GitHub</h3>
+        <p>View repositories</p>
+      </a>
+    </div>
+  </section>
 
   <script>
-    // Display the source code
-    function displayCode() {
-      const codeContent = document.getElementById('codeContent');
-      const htmlContent = document.documentElement.outerHTML;
-      codeContent.innerHTML = '<pre>' + htmlContent.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre>';
-    }
-
-    // Copy code to clipboard
-    function copyCode() {
-      const codeText = document.documentElement.outerHTML;
-      navigator.clipboard.writeText(codeText).then(() => {
-        const btn = document.querySelector('.copy-btn');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        btn.style.background = 'rgba(34, 197, 94, 0.3)';
-        btn.style.borderColor = '#22c55e';
-        btn.style.color = '#22c55e';
-        
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.background = '';
-          btn.style.borderColor = '';
-          btn.style.color = '';
-        }, 2000);
-      });
-    }
-
-    // Toggle between views
-    function toggleView(view) {
-      const container = document.getElementById('splitContainer');
-      const buttons = document.querySelectorAll('.toggle-btn');
-      
-      buttons.forEach(btn => btn.classList.remove('active'));
-      
-      if (view === 'split') {
-        container.classList.remove('preview-only', 'code-only');
-        buttons[0].classList.add('active');
-      } else if (view === 'preview') {
-        container.classList.add('preview-only');
-        container.classList.remove('code-only');
-        buttons[1].classList.add('active');
-      } else if (view === 'code') {
-        container.classList.add('code-only');
-        container.classList.remove('preview-only');
-        buttons[2].classList.add('active');
-      }
-    }
-
     // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -764,12 +659,6 @@
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
-    });
-
-    // Initialize
-    window.addEventListener('load', () => {
-      displayCode();
-      toggleView('split');
     });
   </script>
 </body>
