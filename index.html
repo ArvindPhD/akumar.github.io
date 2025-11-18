@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arvind Kumar | Bio-Fluid Mechanics Research</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     * {
@@ -13,14 +13,39 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #e5e7eb;
-      line-height: 1.6;
-      overflow-x: hidden;
-      background: #0f172a;
+    :root {
+      --primary-blue: #0ea5e9;
+      --primary-blue-dark: #0284c7;
+      --secondary-purple: #8b5cf6;
+      --accent-cyan: #06b6d4;
+      --accent-gold: #f59e0b;
+      --bg-dark: #020617;
+      --bg-darker: #0a0e1a;
+      --bg-card: #0f172a;
+      --bg-elevated: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --border-subtle: rgba(14, 165, 233, 0.1);
+      --border-glow: rgba(14, 165, 233, 0.4);
+      --gradient-1: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
+      --gradient-2: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+      --gradient-3: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background: var(--bg-dark);
+      position: relative;
+    }
+
+    /* Ultra Premium Background */
     .fluid-background {
       position: fixed;
       top: 0;
@@ -28,146 +53,100 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #020617 100%);
+      background: radial-gradient(ellipse at top left, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at center, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+                  linear-gradient(180deg, #0a0e1a 0%, #020617 100%);
       overflow: hidden;
     }
 
-    .wave-container {
+    .mesh-gradient {
       position: absolute;
       width: 100%;
       height: 100%;
-      opacity: 0.15;
+      background-image: 
+        radial-gradient(at 40% 20%, rgba(14, 165, 233, 0.3) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.25) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, rgba(6, 182, 212, 0.2) 0px, transparent 50%),
+        radial-gradient(at 80% 50%, rgba(245, 158, 11, 0.15) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(139, 92, 246, 0.2) 0px, transparent 50%),
+        radial-gradient(at 80% 100%, rgba(14, 165, 233, 0.25) 0px, transparent 50%);
+      filter: blur(100px);
+      opacity: 0.4;
+      animation: meshMove 20s ease-in-out infinite;
     }
 
-    .wave {
+    @keyframes meshMove {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(5deg); }
+    }
+
+    .grid-pattern {
       position: absolute;
-      width: 200%;
+      width: 100%;
       height: 100%;
-      background: repeating-linear-gradient(
-        90deg,
-        transparent 0px,
-        rgba(59, 130, 246, 0.3) 2px,
-        transparent 4px,
-        transparent 20px
-      );
-      animation: waveFlow 20s linear infinite;
+      background-image: 
+        linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridSlide 30s linear infinite;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
     }
 
-    .wave:nth-child(2) {
-      background: repeating-linear-gradient(
-        45deg,
-        transparent 0px,
-        rgba(139, 92, 246, 0.2) 1px,
-        transparent 2px,
-        transparent 30px
-      );
-      animation-duration: 25s;
-      animation-direction: reverse;
+    @keyframes gridSlide {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(60px, 60px); }
     }
 
-    .wave:nth-child(3) {
-      background: repeating-linear-gradient(
-        135deg,
-        transparent 0px,
-        rgba(99, 102, 241, 0.25) 1px,
-        transparent 2px,
-        transparent 25px
-      );
-      animation-duration: 30s;
-    }
-
-    @keyframes waveFlow {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .particle-stream {
+    .floating-particles {
       position: absolute;
       width: 100%;
       height: 100%;
     }
 
-    .stream-particle {
+    .particle {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: rgba(59, 130, 246, 0.6);
+      width: 3px;
+      height: 3px;
+      background: var(--primary-blue);
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
-      animation: streamFlow 8s linear infinite;
+      box-shadow: 0 0 10px var(--primary-blue);
+      animation: float 15s infinite ease-in-out;
+      opacity: 0.6;
     }
 
-    .stream-particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-    .stream-particle:nth-child(2) { top: 40%; left: 30%; animation-delay: 1s; }
-    .stream-particle:nth-child(3) { top: 60%; left: 50%; animation-delay: 2s; }
-    .stream-particle:nth-child(4) { top: 30%; left: 70%; animation-delay: 3s; }
-    .stream-particle:nth-child(5) { top: 50%; left: 15%; animation-delay: 4s; }
+    .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 20s; }
+    .particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 2s; animation-duration: 18s; }
+    .particle:nth-child(3) { left: 60%; top: 30%; animation-delay: 4s; animation-duration: 22s; }
+    .particle:nth-child(4) { left: 80%; top: 70%; animation-delay: 6s; animation-duration: 19s; }
+    .particle:nth-child(5) { left: 40%; top: 60%; animation-delay: 8s; animation-duration: 21s; }
+    .particle:nth-child(6) { left: 90%; top: 10%; animation-delay: 10s; animation-duration: 17s; }
 
-    @keyframes streamFlow {
-      0% { transform: translate(0, 0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translate(100vw, -50vh); opacity: 0; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      25% { transform: translate(30px, -30px) scale(1.2); opacity: 0.8; }
+      50% { transform: translate(-20px, 40px) scale(0.8); opacity: 0.4; }
+      75% { transform: translate(40px, 20px) scale(1.1); opacity: 0.7; }
     }
 
-    .fluid-container {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    .fluid-particle {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      animation: fluidFlow 15s infinite ease-in-out;
-      opacity: 0.8;
-    }
-
-    .fluid-particle:nth-child(1) {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, rgba(59, 130, 246, 0) 70%);
-      top: 10%;
-      right: 5%;
-      animation-duration: 12s;
-    }
-
-    .fluid-particle:nth-child(2) {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0) 70%);
-      bottom: 15%;
-      left: 5%;
-      animation-duration: 15s;
-      animation-delay: 3s;
-    }
-
-    .fluid-particle:nth-child(3) {
-      width: 380px;
-      height: 380px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.55) 0%, rgba(99, 102, 241, 0) 70%);
-      top: 40%;
-      left: 40%;
-      animation-duration: 18s;
-      animation-delay: 6s;
-    }
-
-    @keyframes fluidFlow {
-      0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
-      25% { transform: translate(100px, -80px) rotate(90deg) scale(1.3); }
-      50% { transform: translate(-80px, 100px) rotate(180deg) scale(0.85); }
-      75% { transform: translate(120px, 60px) rotate(270deg) scale(1.2); }
-    }
-
+    /* Premium Navigation */
     nav {
-      background: rgba(10, 14, 39, 0.8);
-      backdrop-filter: blur(20px);
-      padding: 1.2rem 0;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+      left: 0;
+      right: 0;
+      background: rgba(2, 6, 23, 0.7);
+      backdrop-filter: blur(30px) saturate(180%);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0;
+      z-index: 1000;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    nav.scrolled {
+      background: rgba(2, 6, 23, 0.95);
+      padding: 0.75rem 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 1px var(--border-glow);
     }
 
     .nav-container {
@@ -180,86 +159,145 @@
     }
 
     .logo {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: -0.5px;
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -1.5px;
+      position: relative;
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 30px;
+      height: 3px;
+      background: var(--gradient-1);
+      border-radius: 10px;
     }
 
     .nav-links {
       display: flex;
-      gap: 3rem;
+      gap: 2.5rem;
       list-style: none;
     }
 
     .nav-links a {
-      color: rgba(255, 255, 255, 0.7);
+      color: var(--text-secondary);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.95rem;
       transition: all 0.3s;
       position: relative;
-      padding-bottom: 5px;
+      padding: 0.5rem 0;
+      letter-spacing: 0.3px;
     }
-    
-    .nav-links a::after {
+
+    .nav-links a::before {
       content: '';
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 0;
       height: 2px;
-      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      background: var(--gradient-1);
       transition: width 0.3s;
+      border-radius: 10px;
     }
 
     .nav-links a:hover {
-      color: #ffffff;
+      color: var(--text-primary);
     }
-    
-    .nav-links a:hover::after {
+
+    .nav-links a:hover::before {
       width: 100%;
     }
 
+    .mobile-menu {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    /* Hero Section - Ultra Premium */
     .hero {
-      padding: 8rem 2rem 6rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10rem 2rem 6rem;
       text-align: center;
       position: relative;
-      max-width: 1400px;
-      margin: 0 auto;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-badge {
-      display: inline-block;
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      color: #60a5fa;
-      padding: 0.5rem 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: rgba(14, 165, 233, 0.1);
+      border: 1.5px solid rgba(14, 165, 233, 0.3);
+      color: var(--primary-blue);
+      padding: 0.7rem 1.8rem;
       border-radius: 50px;
       font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      letter-spacing: 0.5px;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      letter-spacing: 1px;
+      animation: fadeInUp 0.8s ease-out, glow 3s ease-in-out infinite;
+      text-transform: uppercase;
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(14, 165, 233, 0.6); }
+    }
+
+    .hero-badge i {
+      font-size: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
     .hero h1 {
-      font-size: 4rem;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 10vw, 6.5rem);
       margin-bottom: 1.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 0%, var(--primary-blue) 50%, var(--secondary-purple) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       line-height: 1.1;
+      letter-spacing: -3px;
+      animation: fadeInUp 1s ease-out 0.2s backwards;
+      text-shadow: 0 0 80px rgba(14, 165, 233, 0.3);
     }
 
     .hero .subtitle {
-      font-size: 1.3rem;
-      color: #94a3b8;
-      max-width: 800px;
-      margin: 0 auto 3rem;
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      color: var(--text-secondary);
+      max-width: 850px;
+      margin: 0 auto 3.5rem;
       font-weight: 400;
-      line-height: 1.6;
+      line-height: 1.8;
+      animation: fadeInUp 1.2s ease-out 0.4s backwards;
+      letter-spacing: 0.3px;
     }
 
     .hero-buttons {
@@ -267,50 +305,152 @@
       gap: 1.5rem;
       justify-content: center;
       flex-wrap: wrap;
+      animation: fadeInUp 1.4s ease-out 0.6s backwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.2rem 2.8rem;
+      text-decoration: none;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
     }
 
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      background: var(--gradient-1);
       color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1.05rem;
-      transition: all 0.3s;
-      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 10px 40px rgba(14, 165, 233, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 30px rgba(59, 130, 246, 0.4);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 50px rgba(14, 165, 233, 0.6);
     }
 
     .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 1rem 2.5rem;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1.5px solid rgba(14, 165, 233, 0.3);
       color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1.05rem;
-      transition: all 0.3s;
+      backdrop-filter: blur(10px);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
+      background: rgba(14, 165, 233, 0.1);
+      border-color: rgba(14, 165, 233, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(14, 165, 233, 0.3);
     }
 
-    section {
+    /* Premium Stats Section */
+    .stats-section {
       padding: 5rem 2rem;
+      max-width: 1400px;
+      margin: -3rem auto 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+      border: 1.5px solid var(--border-subtle);
+      padding: 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-1);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--border-glow);
+      box-shadow: 0 25px 60px rgba(14, 165, 233, 0.3);
+    }
+
+    .stat-card:hover::before {
+      opacity: 0.1;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.5px;
+    }
+
+    /* Section Styles - Premium */
+    section {
+      padding: 7rem 2rem;
       max-width: 1400px;
       margin: 0 auto;
       position: relative;
@@ -318,52 +458,380 @@
 
     .section-header {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
+      position: relative;
     }
 
     .section-label {
       display: inline-block;
-      color: #60a5fa;
-      font-size: 0.9rem;
-      font-weight: 700;
+      color: var(--primary-blue);
+      font-size: 0.85rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
+      letter-spacing: 4px;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40px;
+      height: 2px;
+      background: var(--gradient-1);
+    }
+
+    .section-label::before {
+      right: calc(100% + 15px);
+    }
+
+    .section-label::after {
+      left: calc(100% + 15px);
     }
 
     .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, var(--text-secondary) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      letter-spacing: -2px;
+      line-height: 1.2;
     }
 
     .section-description {
-      color: #94a3b8;
-      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-size: 1.15rem;
       max-width: 700px;
       margin: 0 auto;
-      line-height: 1.7;
+      line-height: 1.8;
+      font-weight: 400;
     }
 
-    .expertise-grid {
+    /* About & Experience Sections */
+    .about-section {
+      background: linear-gradient(180deg, transparent 0%, rgba(14, 165, 233, 0.02) 50%, transparent 100%);
+      padding: 7rem 2rem;
+      position: relative;
+    }
+
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, var(--border-subtle), transparent);
+    }
+
+    .about-content {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: 400px 1fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .expertise-card {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      padding: 2.5rem;
-      border-radius: 20px;
+    .about-image-container {
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid var(--border-glow);
+      box-shadow: 0 30px 80px rgba(14, 165, 233, 0.4);
+    }
+
+    .about-image-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, var(--primary-blue), transparent 360deg);
+      animation: rotate 4s linear infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes rotate {
+      100% { transform: rotate(360deg); }
+    }
+
+    .about-placeholder {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-placeholder i {
+      font-size: 10rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.5;
+    }
+
+    .about-decorative {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 25px;
+      left: 25px;
+      border: 2px solid var(--border-subtle);
+      border-radius: 24px;
+      z-index: -1;
+    }
+
+    .about-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+
+    .about-text h4 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: 1.8rem;
+      font-size: 1.05rem;
+      text-align: justify;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .highlight-item {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+      border: 1.5px solid var(--border-subtle);
+      padding: 2rem;
+      border-radius: 16px;
       transition: all 0.4s;
       position: relative;
       overflow: hidden;
+    }
+
+    .highlight-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-1);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .highlight-item:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-glow);
+      box-shadow: 0 20px 50px rgba(14, 165, 233, 0.3);
+    }
+
+    .highlight-item:hover::before {
+      opacity: 0.1;
+    }
+
+    .highlight-item i {
+      font-size: 2.5rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .highlight-item h4 {
+      color: var(--text-primary);
+      font-size: 1.15rem;
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .highlight-item p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin: 0;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Featured Projects - Ultra Premium */
+    .featured-projects {
+      padding: 7rem 2rem;
+      position: relative;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 3rem;
+    }
+
+    .featured-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
+      border: 2px solid var(--border-subtle);
+      padding: 3rem;
+      border-radius: 28px;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+    }
+
+    .featured-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-1);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      border-color: var(--border-glow);
+      box-shadow: 0 35px 80px rgba(14, 165, 233, 0.4);
+    }
+
+    .featured-card:hover::before {
+      opacity: 0.1;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      z-index: 2;
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+
+    .badge-current {
+      background: var(--gradient-1);
+      color: white;
+      box-shadow: 0 8px 30px rgba(14, 165, 233, 0.6);
+    }
+
+    .badge-collaboration {
+      background: var(--gradient-2);
+      color: white;
+      box-shadow: 0 8px 30px rgba(139, 92, 246, 0.6);
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 30px rgba(14, 165, 233, 0.6); }
+      50% { transform: scale(1.05); box-shadow: 0 12px 40px rgba(14, 165, 233, 0.8); }
+    }
+
+    .featured-card h3 {
+      font-size: 1.65rem;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
+      padding-right: 140px;
+      line-height: 1.4;
+      letter-spacing: -0.5px;
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+      font-size: 1.02rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--primary-blue);
+      padding: 0.5rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      font-weight: 600;
+      transition: all 0.3s;
+      letter-spacing: 0.3px;
+    }
+
+    .tag:hover {
+      background: rgba(14, 165, 233, 0.2);
+      border-color: var(--primary-blue);
+      transform: translateY(-2px);
+    }
+
+    /* Expertise Section - Premium */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .expertise-card {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+      border: 1.5px solid var(--border-subtle);
+      padding: 3rem;
+      border-radius: 24px;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
       cursor: pointer;
+      backdrop-filter: blur(20px);
     }
 
     .expertise-card::before {
@@ -373,70 +841,86 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+      background: var(--gradient-1);
       opacity: 0;
-      transition: opacity 0.4s;
+      transition: opacity 0.5s;
     }
 
     .expertise-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(59, 130, 246, 0.4);
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+      transform: translateY(-12px) scale(1.02);
+      border-color: var(--border-glow);
+      box-shadow: 0 30px 70px rgba(14, 165, 233, 0.35);
     }
 
     .expertise-card:hover::before {
-      opacity: 1;
+      opacity: 0.1;
     }
 
     .expertise-card .icon {
-      font-size: 3rem;
-      color: #3b82f6;
-      margin-bottom: 1.5rem;
+      font-size: 3.5rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2rem;
       position: relative;
       z-index: 1;
+      transition: all 0.4s;
+    }
+
+    .expertise-card:hover .icon {
+      transform: scale(1.15) rotateY(180deg);
     }
 
     .expertise-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-      color: #ffffff;
-      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      font-weight: 800;
       position: relative;
       z-index: 1;
+      letter-spacing: -0.5px;
     }
 
     .expertise-card p {
-      color: #94a3b8;
-      font-size: 1rem;
-      line-height: 1.6;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.7;
       position: relative;
       z-index: 1;
     }
 
-    .expertise-card .view-projects {
+    .view-projects {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      color: #60a5fa;
-      font-weight: 600;
-      font-size: 0.9rem;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+      color: var(--primary-blue);
+      font-weight: 700;
+      font-size: 0.95rem;
       position: relative;
       z-index: 1;
+      transition: all 0.3s;
+      letter-spacing: 0.3px;
     }
 
-    /* Project Modal */
+    .view-projects:hover {
+      gap: 1rem;
+      color: var(--text-primary);
+    }
+
+    /* Modal - Premium */
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
+      z-index: 2000;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
-      animation: fadeIn 0.3s ease;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      animation: fadeIn 0.4s ease;
     }
 
     .modal.active {
@@ -445,28 +929,23 @@
       justify-content: center;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
     .modal-content {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      padding: 3rem;
-      border-radius: 24px;
-      max-width: 900px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.98) 100%);
+      border: 2px solid var(--border-glow);
+      padding: 3.5rem;
+      border-radius: 32px;
+      max-width: 950px;
       width: 90%;
       max-height: 85vh;
       overflow-y: auto;
       position: relative;
-      animation: slideUp 0.4s ease;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      animation: slideUp 0.5s ease;
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
     }
 
     @keyframes slideUp {
       from { 
-        transform: translateY(50px);
+        transform: translateY(60px);
         opacity: 0;
       }
       to { 
@@ -477,248 +956,589 @@
 
     .close-modal {
       position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      font-size: 2rem;
-      color: #94a3b8;
+      top: 2rem;
+      right: 2rem;
+      font-size: 1.5rem;
+      color: var(--text-secondary);
       cursor: pointer;
       transition: all 0.3s;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(14, 165, 233, 0.1);
+      border: 1px solid var(--border-subtle);
     }
 
     .close-modal:hover {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      background: rgba(14, 165, 233, 0.2);
       transform: rotate(90deg);
+      border-color: var(--border-glow);
     }
 
     .modal-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
     }
 
     .modal-header h2 {
-      font-size: 2rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--text-primary);
+      margin-bottom: 0.7rem;
+      font-weight: 900;
+      letter-spacing: -1px;
     }
 
     .modal-header .subtitle {
-      color: #94a3b8;
-      font-size: 1rem;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
     }
 
     .projects-container {
       display: grid;
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
     .project-item {
-      background: rgba(15, 23, 42, 0.5);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      padding: 2rem;
-      border-radius: 16px;
-      transition: all 0.3s;
+      background: rgba(14, 165, 233, 0.03);
+      border: 1.5px solid var(--border-subtle);
+      padding: 2.5rem;
+      border-radius: 20px;
+      transition: all 0.4s;
     }
 
     .project-item:hover {
-      border-color: rgba(59, 130, 246, 0.4);
-      transform: translateX(10px);
+      border-color: var(--border-glow);
+      transform: translateX(15px);
+      box-shadow: 0 15px 50px rgba(14, 165, 233, 0.2);
     }
 
     .project-item h3 {
-      color: #ffffff;
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
+      color: var(--text-primary);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1rem;
+      font-weight: 800;
+      flex-wrap: wrap;
     }
 
     .project-status {
       display: inline-block;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
+      padding: 0.4rem 1rem;
+      border-radius: 25px;
       font-size: 0.75rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .status-ongoing {
       background: rgba(34, 197, 94, 0.2);
       color: #4ade80;
-      border: 1px solid rgba(34, 197, 94, 0.3);
+      border: 1.5px solid rgba(34, 197, 94, 0.4);
     }
 
     .status-completed {
       background: rgba(59, 130, 246, 0.2);
       color: #60a5fa;
-      border: 1px solid rgba(59, 130, 246, 0.3);
+      border: 1.5px solid rgba(59, 130, 246, 0.4);
     }
 
     .status-planning {
       background: rgba(251, 191, 36, 0.2);
       color: #fbbf24;
-      border: 1px solid rgba(251, 191, 36, 0.3);
+      border: 1.5px solid rgba(251, 191, 36, 0.4);
     }
 
-    .project-description {
-      color: #94a3b8;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .tag {
-      background: rgba(59, 130, 246, 0.1);
-      color: #60a5fa;
-      padding: 0.4rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      border: 1px solid rgba(59, 130, 246, 0.2);
-    }
-
+    /* Contact Section - Premium */
     .contact-section {
-      padding: 5rem 2rem;
+      padding: 7rem 2rem;
       text-align: center;
-      background: rgba(15, 23, 42, 0.3);
-      border-top: 1px solid rgba(59, 130, 246, 0.1);
+      background: linear-gradient(180deg, transparent 0%, rgba(14, 165, 233, 0.03) 100%);
+      border-top: 1px solid var(--border-subtle);
+      position: relative;
     }
 
     .contact-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      margin-bottom: 1.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 0%, var(--text-secondary) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      font-weight: 800;
+      letter-spacing: -2px;
     }
 
     .contact-section p {
-      font-size: 1.2rem;
-      color: #94a3b8;
-      margin-bottom: 3rem;
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 4rem;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
     .contact-card {
-      background: rgba(59, 130, 246, 0.05);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      padding: 2rem;
-      border-radius: 16px;
-      transition: all 0.3s;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+      border: 1.5px solid var(--border-subtle);
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      transition: all 0.4s;
       cursor: pointer;
       text-decoration: none;
       display: block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-1);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .contact-card:hover::before {
+      opacity: 0.1;
     }
 
     .contact-card:hover {
-      background: rgba(59, 130, 246, 0.1);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--border-glow);
+      box-shadow: 0 20px 60px rgba(14, 165, 233, 0.4);
     }
 
     .contact-card i {
-      font-size: 2.5rem;
-      color: #3b82f6;
-      margin-bottom: 1rem;
+      font-size: 3rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+      transition: all 0.4s;
+    }
+
+    .contact-card:hover i {
+      transform: scale(1.15) rotateY(360deg);
     }
 
     .contact-card h3 {
-      font-size: 1.1rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 0.7rem;
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
     }
 
     .contact-card p {
-      color: #94a3b8;
-      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-size: 1rem;
       margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Footer - Premium */
+    footer {
+      background: rgba(2, 6, 23, 0.9);
+      border-top: 1px solid var(--border-subtle);
+      padding: 2.5rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    footer p {
+      margin: 0;
+      letter-spacing: 0.3px;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gradient-1);
+      border-radius: 10px;
+      border: 2px solid var(--bg-dark);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gradient-2);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-image-container {
+        max-width: 400px;
+        margin: 0 auto;
+      }
     }
 
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
       .nav-links {
         display: none;
       }
 
+      .mobile-menu {
+        display: block;
+      }
+
       .hero {
-        padding: 4rem 1rem 3rem;
+        padding: 8rem 1.5rem 4rem;
       }
 
       section {
-        padding: 3rem 1rem;
+        padding: 5rem 1.5rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .about-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-card h3 {
+        padding-right: 0;
+        margin-top: 3.5rem;
+      }
+
+      .featured-badge {
+        top: 1.5rem;
+        right: 1.5rem;
+        left: 1.5rem;
+        text-align: center;
       }
 
       .modal-content {
-        padding: 2rem;
+        padding: 2.5rem;
         width: 95%;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-label::before,
+      .section-label::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .stat-number {
+        font-size: 3rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="fluid-background">
-    <div class="fluid-container">
-      <div class="fluid-particle"></div>
-      <div class="fluid-particle"></div>
-      <div class="fluid-particle"></div>
+    <div class="mesh-gradient"></div>
+    <div class="grid-pattern"></div>
+    <div class="floating-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
     </div>
   </div>
 
-  <nav>
+  <nav id="navbar">
     <div class="nav-container">
       <div class="logo">Arvind Kumar</div>
       <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#expertise">Expertise</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <div class="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="hero-badge">Bio-Fluid Mechanics & CFD Specialist</div>
-    <h1>Advancing Fluid<br>Dynamics Research</h1>
-    <p class="subtitle">Computational fluid dynamics expert specializing in bio-fluid mechanics, heat transfer analysis, and complex flow phenomena modeling</p>
-    <div class="hero-buttons">
-      <a href="#expertise" class="btn-primary">
-        <span>Explore Research</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
-      <a href="#contact" class="btn-secondary">
-        <i class="fas fa-envelope"></i>
-        <span>Get in Touch</span>
-      </a>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-flask"></i>
+        <span>Bio-Fluid Mechanics & CFD Specialist</span>
+      </div>
+      <h1>Advancing Fluid<br>Dynamics Research</h1>
+      <p class="subtitle">Computational fluid dynamics expert specializing in bio-fluid mechanics, heat transfer analysis, and complex flow phenomena modeling</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">
+          <span>Explore Research</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i>
+          <span>Get in Touch</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">PhD*</div>
+        <div class="stat-label">Scholar in Progress</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Research Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Dedication</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="about-section">
+    <div class="section-header">
+      <div class="section-label">Get to Know Me</div>
+      <h2 class="section-title">About Me</h2>
+      <p class="section-description">Passionate researcher dedicated to advancing fluid mechanics and computational modeling</p>
+    </div>
+
+    <div class="about-content">
+      <div class="about-image-container">
+        <div class="about-image-wrapper">
+          <div class="about-placeholder">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+        </div>
+        <div class="about-decorative"></div>
+      </div>
+
+      <div class="about-text">
+        <h3>Bio-Fluid Mechanics Researcher & CFD Specialist</h3>
+        <p>
+          I am a PhD scholar specializing in computational fluid dynamics with a strong focus on bio-fluid mechanics and thermal analysis. My academic journey spans from mechanical engineering fundamentals at A.U Tamil Nadu (B.Tech) to specialized thermal engineering at NIT Rourkela (M.Tech), and now pursuing doctoral research in advanced fluid mechanics and computational modeling.
+        </p>
+        <p>
+          With a solid foundation in thermal sciences and expertise in numerical modeling, I investigate complex flow phenomena ranging from microscale biological transport to large-scale industrial systems. My research employs state-of-the-art computational tools and mathematical frameworks to solve challenging problems in fluid dynamics, heat transfer, and environmental engineering.
+        </p>
+        <p>
+          Currently, my doctoral research explores the fascinating world of active particle dynamics, brake-generated particulate emissions, and their environmental impacts. My interdisciplinary approach combines mechanical engineering principles, thermal sciences, physics, and computational mathematics to address real-world challenges in sustainability and public health.
+        </p>
+
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <i class="fas fa-graduation-cap"></i>
+            <h4>Academic Background</h4>
+            <p>PhD* Mechanical Engineering (Ongoing) | M.Tech Thermal Engineering, NIT Rourkela | B.Tech Mechanical Engineering, A.U Tamil Nadu</p>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-code"></i>
+            <h4>Technical Skills</h4>
+            <p>ANSYS Fluent, OpenFOAM, COMSOL, Python, MATLAB, HPC Computing</p>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-flask"></i>
+            <h4>Research Focus</h4>
+            <p>Bio-fluid mechanics, particle dynamics, heat transfer, and environmental impact analysis</p>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-trophy"></i>
+            <h4>Achievements</h4>
+            <p>Published researcher with contributions to CFD methodology and biomedical applications</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="about-section">
+    <div class="section-header">
+      <div class="section-label">Professional Journey</div>
+      <h2 class="section-title">Experience</h2>
+      <p class="section-description">A diverse background spanning academia, research, and industry quality management</p>
+    </div>
+
+    <div class="about-content" style="grid-template-columns: 1fr; gap: 3rem;">
+      <div class="about-text">
+        <h3>Assistant Professor (Mechanical Engineering)</h3>
+        <h4 style="color: var(--primary-blue); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;">Allenhouse Institute of Technology, Kanpur | 2021–2022</h4>
+        <p>
+          During my tenure as Assistant Professor at Allenhouse Institute of Technology, I delivered comprehensive lectures on advanced mechanical engineering subjects including Computational Fluid Dynamics, Heat and Mass Transfer, and Fluid Mechanics. My teaching methodology emphasized the integration of theoretical concepts with practical computational tools, enabling students to develop both fundamental understanding and hands-on technical skills.
+        </p>
+        <p>
+          I supervised undergraduate and postgraduate student projects focused on CFD simulations and thermal systems, mentoring them through complex research challenges. My approach involved developing innovative teaching methodologies that incorporated computational software demonstrations, making abstract concepts tangible and accessible to students at various learning levels.
+        </p>
+        <p>
+          Beyond classroom instruction, I actively mentored students in research activities and provided guidance towards competitive examinations and higher studies. I published research papers and encouraged student participation in technical conferences and workshops, fostering a research-oriented mindset. Additionally, I contributed significantly to department accreditation processes and quality improvement initiatives, ensuring adherence to academic standards and continuous enhancement of educational delivery.
+        </p>
+
+        <h3 style="margin-top: 3rem;">Quality Engineer</h3>
+        <h4 style="color: var(--primary-blue); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;">Shine Metal Udyog (Eicher Engines) | 2015–2019</h4>
+        <p>
+          As a Quality Engineer at Shine Metal Udyog, specializing in Eicher Engines manufacturing, I led transformative Lean manufacturing projects that achieved a remarkable 25% reduction in product defects through systematic process improvements and data-driven decision making. My role demanded a comprehensive understanding of quality management systems and their practical implementation in high-volume manufacturing environments.
+        </p>
+        <p>
+          I successfully implemented Statistical Process Control (SPC) tools and established ISO 9001 quality management systems, creating a robust framework for continuous quality assurance. My responsibilities included conducting rigorous supplier quality audits and facilitating Corrective and Preventive Action (CAPA) resolutions, ensuring that quality standards were maintained throughout the entire supply chain.
+        </p>
+        <p>
+          Managing PPAP (Production Part Approval Process) documentation and customer quality requirements required meticulous attention to detail and strong coordination with cross-functional teams. I trained these teams on quality tools including the 8D problem-solving methodology, building organizational capability for systematic issue resolution and process optimization. This experience provided invaluable insights into industrial quality management, process control, and the practical application of engineering principles in manufacturing operations.
+        </p>
+
+        <h3 style="margin-top: 3rem;">Lecturer (Mechanical Engineering)</h3>
+        <h4 style="color: var(--primary-blue); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;">Shekhawati Engineering College, Dundlod, Rajasthan | 2014–2015</h4>
+        <p>
+          My professional journey in academia began at Shekhawati Engineering College, where I delivered lectures on core mechanical engineering subjects including Fluid Mechanics, Thermodynamics, and Heat Transfer. This foundational teaching experience allowed me to develop effective pedagogical approaches for conveying complex engineering concepts to undergraduate students.
+        </p>
+        <p>
+          I developed comprehensive course materials, problem sets, and laboratory experiments that reinforced theoretical learning through practical application. Mentoring students on academic projects, I provided guidance on fundamental engineering concepts and problem-solving approaches, helping them build strong analytical and technical foundations.
+        </p>
+        <p>
+          Conducting tutorials and assessment activities, I focused on enhancing student learning outcomes through personalized attention and feedback. My contributions to curriculum development and departmental academic activities helped shape the educational framework and improve the overall quality of instruction. This role established my passion for teaching and research, setting the foundation for my subsequent academic and professional pursuits.
+        </p>
+
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h4>Teaching Excellence</h4>
+            <p>CFD, Heat Transfer, Fluid Mechanics, Thermodynamics - Innovative methodologies with computational tools integration</p>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-industry"></i>
+            <h4>Industry Expertise</h4>
+            <p>Lean Manufacturing, ISO 9001, SPC, PPAP, CAPA - 25% defect reduction achievement</p>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-users"></i>
+            <h4>Mentorship & Leadership</h4>
+            <p>Student supervision, research guidance, cross-functional team training, accreditation processes</p>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-cogs"></i>
+            <h4>Process Optimization</h4>
+            <p>Quality systems implementation, supplier audits, 8D problem-solving, continuous improvement initiatives</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="featured-projects">
+    <div class="section-header">
+      <div class="section-label">Current Work</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-description">Highlighting ongoing research and collaboration opportunities</p>
+    </div>
+
+    <div class="featured-grid">
+      <div class="featured-card">
+        <span class="featured-badge badge-current">Current Research</span>
+        <h3>Numerical Investigation of Active Particle Dynamics in Complex Flow Fields</h3>
+        <p class="project-description">
+          Advanced computational study of self-propelled particle behavior in fluid environments. Investigating collective motion, particle-fluid interactions, and emergent patterns using direct numerical simulation and Lagrangian tracking methods. This research explores how active particles navigate through turbulent and laminar flows, with applications in biological systems and microrobotics.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Active Matter</span>
+          <span class="tag">Particle Dynamics</span>
+          <span class="tag">DNS</span>
+          <span class="tag">Lagrangian Methods</span>
+          <span class="tag">OpenFOAM</span>
+        </div>
+      </div>
+
+      <div class="featured-card">
+        <span class="featured-badge badge-collaboration">Open for Collaboration</span>
+        <h3>Thermal Analysis of Brake-Generated Particulate Matter</h3>
+        <p class="project-description">
+          Investigating thermal processes and particle generation mechanisms in vehicle braking systems. This comparative environmental impact study examines micro and nano-sized particulate emissions from friction braking in both conventional and electric vehicles. Research addresses whether brake wear particles pose greater environmental and health risks than traditional exhaust emissions.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Brake Emissions</span>
+          <span class="tag">Particulate Matter</span>
+          <span class="tag">Thermal Analysis</span>
+          <span class="tag">Environmental Impact</span>
+          <span class="tag">EV Technology</span>
+        </div>
+      </div>
+
+      <div class="featured-card">
+        <span class="featured-badge badge-current">Current Research</span>
+        <h3>Turbulent Flow Analysis in Complex Geometries</h3>
+        <p class="project-description">
+          Developing advanced RANS and LES models for turbulent flow prediction in industrial applications. Focus on improving computational efficiency while maintaining accuracy for complex geometric configurations. Applications span aerospace, automotive, and energy sectors with emphasis on optimization strategies.
+        </p>
+        <div class="project-tags">
+          <span class="tag">ANSYS Fluent</span>
+          <span class="tag">OpenFOAM</span>
+          <span class="tag">Turbulence Modeling</span>
+          <span class="tag">HPC</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -768,7 +1588,6 @@
     </div>
   </section>
 
-  <!-- Project Modal -->
   <div id="projectModal" class="modal">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
@@ -776,15 +1595,13 @@
         <h2 id="modalTitle">Projects</h2>
         <p class="subtitle" id="modalSubtitle"></p>
       </div>
-      <div class="projects-container" id="projectsContainer">
-        <!-- Projects will be dynamically loaded here -->
-      </div>
+      <div class="projects-container" id="projectsContainer"></div>
     </div>
   </div>
 
   <section id="contact" class="contact-section">
     <h2>Let's Collaborate</h2>
-    <p>Interested in discussing research opportunities?</p>
+    <p>Interested in discussing research opportunities or potential collaborations?</p>
     
     <div class="contact-grid">
       <a href="mailto:rajputarvi3@gmail.com" class="contact-card">
@@ -794,81 +1611,4 @@
       </a>
 
       <a href="https://www.linkedin.com/in/arvind-kumar-5464bb112" target="_blank" rel="noopener noreferrer" class="contact-card">
-        <i class="fab fa-linkedin"></i>
-        <h3>LinkedIn</h3>
-        <p>Connect professionally</p>
-      </a>
-
-      <a href="https://github.com/ArvindPhD" target="_blank" rel="noopener noreferrer" class="contact-card">
-        <i class="fab fa-github"></i>
-        <h3>GitHub</h3>
-        <p>View repositories</p>
-      </a>
-    </div>
-  </section>
-
-  <script>
-    // Project data
-    const projectData = {
-      cfd: {
-        title: "Computational Fluid Dynamics",
-        subtitle: "Current Research & Projects",
-        projects: [
-          {
-            title: "Numerical Investigation of Active Particle Dynamics in Complex Flow Fields",
-            status: "ongoing",
-            description: "Advanced computational study of self-propelled particle behavior in fluid environments. Investigating collective motion, particle-fluid interactions, and emergent patterns using direct numerical simulation and Lagrangian tracking methods.",
-            tags: ["Active Matter", "Particle Dynamics", "DNS", "Lagrangian Methods", "OpenFOAM"]
-          },
-          {
-            title: "Turbulent Flow Analysis in Complex Geometries",
-            status: "ongoing",
-            description: "Developing advanced RANS and LES models for turbulent flow prediction in industrial applications. Focus on improving computational efficiency while maintaining accuracy.",
-            tags: ["ANSYS Fluent", "OpenFOAM", "Turbulence Modeling", "HPC"]
-          },
-          {
-            title: "Multiphase Flow Simulation in Microchannels",
-            status: "ongoing",
-            description: "Investigation of gas-liquid two-phase flows in microchannels using Volume of Fluid (VOF) method. Applications in chemical reactors and heat exchangers.",
-            tags: ["VOF Method", "CFD", "Two-Phase Flow", "COMSOL"]
-          }
-        ]
-      },
-      heat: {
-        title: "Heat Transfer Analysis",
-        subtitle: "Thermal Engineering Projects",
-        projects: [
-          {
-            title: "Thermal Analysis of Brake-Generated Particulate Matter: A Comparative Environmental Impact Study",
-            status: "ongoing",
-            description: "Investigating the thermal processes and particle generation mechanisms in vehicle braking systems. This research examines micro and nano-sized particulate emissions from friction braking in both conventional and electric vehicles. Comparative analysis evaluates whether brake wear particles pose greater environmental and health risks than traditional diesel and petrol exhaust emissions, addressing a critical gap in green mobility assessment.",
-            tags: ["Brake Emissions", "Particulate Matter", "Thermal Analysis", "Environmental Impact", "EV Technology"]
-          },
-          {
-            title: "Conjugate Heat Transfer in Electronics Cooling",
-            status: "ongoing",
-            description: "Analyzing coupled fluid flow and heat transfer for optimizing thermal management in electronic devices and data centers.",
-            tags: ["Conjugate Heat Transfer", "Electronics Cooling", "Thermal Design"]
-          },
-          {
-            title: "Phase Change Heat Transfer in Energy Systems",
-            status: "planning",
-            description: "Research on boiling and condensation phenomena for enhanced heat transfer in renewable energy applications.",
-            tags: ["Phase Change", "Boiling", "Condensation", "Energy Systems"]
-          }
-        ]
-      },
-      biofluid: {
-        title: "Bio-Fluid Mechanics",
-        subtitle: "Biological Flow Research",
-        projects: [
-          {
-            title: "Blood Flow in Stenotic Arteries",
-            status: "ongoing",
-            description: "Computational modeling of hemodynamics in diseased arteries with stenosis. Investigating wall shear stress and flow separation patterns.",
-            tags: ["Hemodynamics", "Medical CFD", "Cardiovascular", "FSI"]
-          },
-          {
-            title: "Respiratory Flow Dynamics",
-            status: "ongoing",
-            description: "
+        <i
