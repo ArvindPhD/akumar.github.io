@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arvind Kumar | Bio-Fluid Mechanics Research</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     * {
       margin: 0;
@@ -45,7 +45,6 @@
       position: relative;
     }
 
-    /* Ultra Premium Background */
     .fluid-background {
       position: fixed;
       top: 0;
@@ -65,20 +64,12 @@
       width: 100%;
       height: 100%;
       background-image: 
-        radial-gradient(at 40% 20%, rgba(14, 165, 233, 0.3) 0px, transparent 50%),
-        radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.25) 0px, transparent 50%),
-        radial-gradient(at 0% 50%, rgba(6, 182, 212, 0.2) 0px, transparent 50%),
-        radial-gradient(at 80% 50%, rgba(245, 158, 11, 0.15) 0px, transparent 50%),
-        radial-gradient(at 0% 100%, rgba(139, 92, 246, 0.2) 0px, transparent 50%),
-        radial-gradient(at 80% 100%, rgba(14, 165, 233, 0.25) 0px, transparent 50%);
-      filter: blur(100px);
-      opacity: 0.4;
-      animation: meshMove 20s ease-in-out infinite;
-    }
-
-    @keyframes meshMove {
-      0%, 100% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.1) rotate(5deg); }
+        radial-gradient(at 40% 20%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
+        radial-gradient(at 80% 100%, rgba(14, 165, 233, 0.12) 0px, transparent 50%);
+      filter: blur(80px);
+      opacity: 0.5;
     }
 
     .grid-pattern {
@@ -86,16 +77,10 @@
       width: 100%;
       height: 100%;
       background-image: 
-        linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      animation: gridSlide 30s linear infinite;
-      mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-    }
-
-    @keyframes gridSlide {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(60px, 60px); }
+        linear-gradient(rgba(14, 165, 233, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
     }
 
     .floating-particles {
@@ -129,7 +114,6 @@
       75% { transform: translate(40px, 20px) scale(1.1); opacity: 0.7; }
     }
 
-    /* Premium Navigation */
     nav {
       position: fixed;
       top: 0;
@@ -225,7 +209,6 @@
       cursor: pointer;
     }
 
-    /* Hero Section - Ultra Premium */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -376,7 +359,6 @@
       box-shadow: 0 10px 40px rgba(14, 165, 233, 0.3);
     }
 
-    /* Premium Stats Section */
     .stats-section {
       padding: 5rem 2rem;
       max-width: 1400px;
@@ -448,7 +430,6 @@
       letter-spacing: 0.5px;
     }
 
-    /* Section Styles - Premium */
     section {
       padding: 7rem 2rem;
       max-width: 1400px;
@@ -513,7 +494,6 @@
       font-weight: 400;
     }
 
-    /* About & Experience Sections */
     .about-section {
       background: linear-gradient(180deg, transparent 0%, rgba(14, 165, 233, 0.02) 50%, transparent 100%);
       padding: 7rem 2rem;
@@ -631,6 +611,12 @@
       margin-top: 3rem;
     }
 
+    @media (max-width: 900px) {
+      .about-highlights {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .highlight-item {
       background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
       border: 1.5px solid var(--border-subtle);
@@ -692,7 +678,6 @@
       z-index: 1;
     }
 
-    /* Featured Projects - Ultra Premium */
     .featured-projects {
       padding: 7rem 2rem;
       position: relative;
@@ -815,7 +800,6 @@
       transform: translateY(-2px);
     }
 
-    /* Expertise Section - Premium */
     .expertise-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -909,7 +893,6 @@
       color: var(--text-primary);
     }
 
-    /* Modal - Premium */
     .modal {
       display: none;
       position: fixed;
@@ -941,6 +924,11 @@
       position: relative;
       animation: slideUp 0.5s ease;
       box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @keyframes slideUp {
@@ -1057,7 +1045,12 @@
       border: 1.5px solid rgba(251, 191, 36, 0.4);
     }
 
-    /* Contact Section - Premium */
+    .project-item p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
     .contact-section {
       padding: 7rem 2rem;
       text-align: center;
@@ -1160,7 +1153,6 @@
       z-index: 1;
     }
 
-    /* Footer - Premium */
     footer {
       background: rgba(2, 6, 23, 0.9);
       border-top: 1px solid var(--border-subtle);
@@ -1175,7 +1167,6 @@
       letter-spacing: 0.3px;
     }
 
-    /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 12px;
     }
@@ -1194,7 +1185,6 @@
       background: var(--gradient-2);
     }
 
-    /* Responsive Design */
     @media (max-width: 1024px) {
       .about-content {
         grid-template-columns: 1fr;
@@ -1399,13 +1389,23 @@
           </div>
           <div class="highlight-item">
             <i class="fas fa-code"></i>
-            <h4>Technical Skills</h4>
-            <p>ANSYS Fluent, OpenFOAM, COMSOL, Python, MATLAB, HPC Computing</p>
+            <h4>Programming & Tools</h4>
+            <p>Python, MATLAB, FORTRAN90, C | FFTW, OpenMP, MPI | ANSYS Fluent, Tecplot</p>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-calculator"></i>
+            <h4>Numerical Methods</h4>
+            <p>FDM, FVM, Spectral Methods, Turbulence Modeling, HPC Computing</p>
           </div>
           <div class="highlight-item">
             <i class="fas fa-flask"></i>
-            <h4>Research Focus</h4>
-            <p>Bio-fluid mechanics, particle dynamics, heat transfer, and environmental impact analysis</p>
+            <h4>Core Domains</h4>
+            <p>CFD, Heat Transfer, Bio-fluids, Microfluidics, Multiphase Flows, Cryogenic Systems</p>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-industry"></i>
+            <h4>Manufacturing Quality</h4>
+            <p>SPC, Lean Manufacturing, ISO 9001, 8D Methodology, PPAP, Supplier Quality</p>
           </div>
           <div class="highlight-item">
             <i class="fas fa-trophy"></i>
@@ -1431,35 +1431,17 @@
         <p>
           During my tenure as Assistant Professor at Allenhouse Institute of Technology, I delivered comprehensive lectures on advanced mechanical engineering subjects including Computational Fluid Dynamics, Heat and Mass Transfer, and Fluid Mechanics. My teaching methodology emphasized the integration of theoretical concepts with practical computational tools, enabling students to develop both fundamental understanding and hands-on technical skills.
         </p>
-        <p>
-          I supervised undergraduate and postgraduate student projects focused on CFD simulations and thermal systems, mentoring them through complex research challenges. My approach involved developing innovative teaching methodologies that incorporated computational software demonstrations, making abstract concepts tangible and accessible to students at various learning levels.
-        </p>
-        <p>
-          Beyond classroom instruction, I actively mentored students in research activities and provided guidance towards competitive examinations and higher studies. I published research papers and encouraged student participation in technical conferences and workshops, fostering a research-oriented mindset. Additionally, I contributed significantly to department accreditation processes and quality improvement initiatives, ensuring adherence to academic standards and continuous enhancement of educational delivery.
-        </p>
 
         <h3 style="margin-top: 3rem;">Quality Engineer</h3>
         <h4 style="color: var(--primary-blue); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;">Shine Metal Udyog (Eicher Engines) | 2015–2019</h4>
         <p>
-          As a Quality Engineer at Shine Metal Udyog, specializing in Eicher Engines manufacturing, I led transformative Lean manufacturing projects that achieved a remarkable 25% reduction in product defects through systematic process improvements and data-driven decision making. My role demanded a comprehensive understanding of quality management systems and their practical implementation in high-volume manufacturing environments.
-        </p>
-        <p>
-          I successfully implemented Statistical Process Control (SPC) tools and established ISO 9001 quality management systems, creating a robust framework for continuous quality assurance. My responsibilities included conducting rigorous supplier quality audits and facilitating Corrective and Preventive Action (CAPA) resolutions, ensuring that quality standards were maintained throughout the entire supply chain.
-        </p>
-        <p>
-          Managing PPAP (Production Part Approval Process) documentation and customer quality requirements required meticulous attention to detail and strong coordination with cross-functional teams. I trained these teams on quality tools including the 8D problem-solving methodology, building organizational capability for systematic issue resolution and process optimization. This experience provided invaluable insights into industrial quality management, process control, and the practical application of engineering principles in manufacturing operations.
+          As a Quality Engineer at Shine Metal Udyog, specializing in Eicher Engines manufacturing, I led transformative Lean manufacturing projects that achieved a remarkable 25% reduction in product defects through systematic process improvements and data-driven decision making.
         </p>
 
         <h3 style="margin-top: 3rem;">Lecturer (Mechanical Engineering)</h3>
         <h4 style="color: var(--primary-blue); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;">Shekhawati Engineering College, Dundlod, Rajasthan | 2014–2015</h4>
         <p>
-          My professional journey in academia began at Shekhawati Engineering College, where I delivered lectures on core mechanical engineering subjects including Fluid Mechanics, Thermodynamics, and Heat Transfer. This foundational teaching experience allowed me to develop effective pedagogical approaches for conveying complex engineering concepts to undergraduate students.
-        </p>
-        <p>
-          I developed comprehensive course materials, problem sets, and laboratory experiments that reinforced theoretical learning through practical application. Mentoring students on academic projects, I provided guidance on fundamental engineering concepts and problem-solving approaches, helping them build strong analytical and technical foundations.
-        </p>
-        <p>
-          Conducting tutorials and assessment activities, I focused on enhancing student learning outcomes through personalized attention and feedback. My contributions to curriculum development and departmental academic activities helped shape the educational framework and improve the overall quality of instruction. This role established my passion for teaching and research, setting the foundation for my subsequent academic and professional pursuits.
+          My professional journey in academia began at Shekhawati Engineering College, where I delivered lectures on core mechanical engineering subjects including Fluid Mechanics, Thermodynamics, and Heat Transfer.
         </p>
 
         <div class="about-highlights">
@@ -1500,7 +1482,7 @@
         <span class="featured-badge badge-current">Current Research</span>
         <h3>Numerical Investigation of Active Particle Dynamics in Complex Flow Fields</h3>
         <p class="project-description">
-          Advanced computational study of self-propelled particle behavior in fluid environments. Investigating collective motion, particle-fluid interactions, and emergent patterns using direct numerical simulation and Lagrangian tracking methods. This research explores how active particles navigate through turbulent and laminar flows, with applications in biological systems and microrobotics.
+          Advanced computational study of self-propelled particle behavior in fluid environments. Investigating collective motion, particle-fluid interactions, and emergent patterns using direct numerical simulation and Lagrangian tracking methods.
         </p>
         <div class="project-tags">
           <span class="tag">Active Matter</span>
@@ -1515,7 +1497,7 @@
         <span class="featured-badge badge-collaboration">Open for Collaboration</span>
         <h3>Thermal Analysis of Brake-Generated Particulate Matter</h3>
         <p class="project-description">
-          Investigating thermal processes and particle generation mechanisms in vehicle braking systems. This comparative environmental impact study examines micro and nano-sized particulate emissions from friction braking in both conventional and electric vehicles. Research addresses whether brake wear particles pose greater environmental and health risks than traditional exhaust emissions.
+          Investigating thermal processes and particle generation mechanisms in vehicle braking systems. This comparative environmental impact study examines micro and nano-sized particulate emissions from friction braking.
         </p>
         <div class="project-tags">
           <span class="tag">Brake Emissions</span>
@@ -1530,7 +1512,7 @@
         <span class="featured-badge badge-current">Current Research</span>
         <h3>Turbulent Flow Analysis in Complex Geometries</h3>
         <p class="project-description">
-          Developing advanced RANS and LES models for turbulent flow prediction in industrial applications. Focus on improving computational efficiency while maintaining accuracy for complex geometric configurations. Applications span aerospace, automotive, and energy sectors with emphasis on optimization strategies.
+          Developing advanced RANS and LES models for turbulent flow prediction in industrial applications. Focus on improving computational efficiency while maintaining accuracy for complex geometric configurations.
         </p>
         <div class="project-tags">
           <span class="tag">ANSYS Fluent</span>
@@ -1604,6 +1586,12 @@
     <p>Interested in discussing research opportunities or potential collaborations?</p>
     
     <div class="contact-grid">
+      <a href="tel:+918890831376" class="contact-card">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Phone</h3>
+        <p>+91 8890831376</p>
+      </a>
+
       <a href="mailto:rajputarvi3@gmail.com" class="contact-card">
         <i class="fas fa-envelope"></i>
         <h3>Email</h3>
@@ -1611,4 +1599,229 @@
       </a>
 
       <a href="https://www.linkedin.com/in/arvind-kumar-5464bb112" target="_blank" rel="noopener noreferrer" class="contact-card">
-        <i
+        <i class="fab fa-linkedin-in"></i>
+        <h3>LinkedIn</h3>
+        <p>arvind-kumar-5464bb112</p>
+      </a>
+
+      <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Google Scholar</h3>
+        <p>View Publications</p>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Arvind Kumar. All rights reserved. | Bio-Fluid Mechanics Research</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Project data
+    const projectData = {
+      cfd: {
+        title: 'Computational Fluid Dynamics Projects',
+        subtitle: 'Advanced numerical simulations and flow analysis',
+        projects: [
+          {
+            name: 'Turbulent Flow in Pipe Networks',
+            status: 'completed',
+            description: 'Comprehensive CFD analysis of turbulent flow patterns in complex pipe network systems using RANS and LES approaches.'
+          },
+          {
+            name: 'Multi-phase Flow Modeling',
+            status: 'ongoing',
+            description: 'Development of advanced multi-phase flow models for industrial applications with phase change phenomena.'
+          },
+          {
+            name: 'Aerodynamic Optimization',
+            status: 'completed',
+            description: 'Shape optimization study for aerodynamic efficiency improvement using adjoint methods and CFD.'
+          }
+        ]
+      },
+      heat: {
+        title: 'Heat Transfer Analysis Projects',
+        subtitle: 'Thermal systems and energy optimization',
+        projects: [
+          {
+            name: 'Heat Exchanger Design Optimization',
+            status: 'completed',
+            description: 'Thermal performance optimization of compact heat exchangers using computational analysis and experimental validation.'
+          },
+          {
+            name: 'Cooling System Analysis for Electronics',
+            status: 'ongoing',
+            description: 'Investigation of advanced cooling strategies for high-power electronics using conjugate heat transfer analysis.'
+          },
+          {
+            name: 'Phase Change Material Applications',
+            status: 'planning',
+            description: 'Thermal energy storage systems utilizing phase change materials for sustainable energy management.'
+          }
+        ]
+      },
+      biofluid: {
+        title: 'Bio-Fluid Mechanics Projects',
+        subtitle: 'Biological flows and medical applications',
+        projects: [
+          {
+            name: 'Blood Flow in Stenotic Arteries',
+            status: 'completed',
+            description: 'Hemodynamic analysis of blood flow patterns in stenosed coronary arteries using patient-specific geometries.'
+          },
+          {
+            name: 'Drug Delivery Particle Tracking',
+            status: 'ongoing',
+            description: 'Lagrangian particle tracking study of targeted drug delivery in complex vascular networks.'
+          },
+          {
+            name: 'Respiratory Airflow Modeling',
+            status: 'ongoing',
+            description: 'CFD simulation of airflow and particle deposition in human respiratory system for inhalation therapy.'
+          },
+          {
+            name: 'Microfluidic Cell Sorting',
+            status: 'planning',
+            description: 'Design and optimization of microfluidic devices for efficient cell separation and sorting.'
+          }
+        ]
+      },
+      microfluidics: {
+        title: 'Microfluidics Projects',
+        subtitle: 'Microscale flow phenomena and lab-on-chip',
+        projects: [
+          {
+            name: 'Lab-on-Chip Droplet Generation',
+            status: 'completed',
+            description: 'Design of microfluidic channels for controlled droplet generation and manipulation.'
+          },
+          {
+            name: 'Electrokinetic Flow Analysis',
+            status: 'ongoing',
+            description: 'Investigation of electroosmotic and electrophoretic flows in micro-channels for biosensing applications.'
+          },
+          {
+            name: 'Mixing Enhancement in Microchannels',
+            status: 'ongoing',
+            description: 'Development of passive mixing strategies for rapid fluid mixing in laminar flow regimes.'
+          }
+        ]
+      }
+    };
+
+    // Modal functionality
+    const modal = document.getElementById('projectModal');
+    const closeBtn = document.querySelector('.close-modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const projectsContainer = document.getElementById('projectsContainer');
+
+    document.querySelectorAll('.expertise-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const expertise = card.dataset.expertise;
+        const data = projectData[expertise];
+        
+        modalTitle.textContent = data.title;
+        modalSubtitle.textContent = data.subtitle;
+        
+        projectsContainer.innerHTML = data.projects.map(project => `
+          <div class="project-item">
+            <h3>
+              ${project.name}
+              <span class="project-status status-${project.status}">${project.status}</span>
+            </h3>
+            <p>${project.description}</p>
+          </div>
+        `).join('');
+        
+        modal.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenu.addEventListener('click', () => {
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '100%';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.backgroundColor = 'rgba(2, 6, 23, 0.98)';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.padding = '2rem';
+        navLinks.style.gap = '1.5rem';
+        navLinks.style.borderTop = '1px solid rgba(14, 165, 233, 0.3)';
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.style.display = 'none';
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.stat-card, .expertise-card, .featured-card, .contact-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
